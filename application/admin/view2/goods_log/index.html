@@ -1,0 +1,181 @@
+<include file="public/layout" />
+<style>
+    span.type-virtual {
+        background-color: #3598DC;
+        line-height: 16px;
+        color: #FFF;
+        display: inline-block;
+        height: 16px;
+        padding: 1px 4px;
+        margin-right: 2px;
+        box-shadow: inset 1px 1px 0 rgba(255,255,255,0.25);
+        cursor: default;
+    }
+</style>
+<body style="background-color: rgb(255, 255, 255); overflow: auto; cursor: default; -moz-user-select: inherit;">
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <div class="subject">
+        <h3>商品编辑记录</h3>
+        <h5></h5>
+      </div>
+    </div>
+  </div>
+  <!-- 操作说明 -->
+  <div id="explanation" class="explanation" style="color: rgb(44, 188, 163); background-color: rgb(237, 251, 248); width: 99%; height: 100%;">
+    <div id="checkZoom" class="title"><i class="fa fa-lightbulb-o"></i>
+      <h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+      <span title="收起提示" id="explanationZoom" style="display: block;"></span>
+    </div>
+    <ul>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="flexigrid">
+    <div class="mDiv">
+      <div class="ftitle">
+        <h3>商品编辑记录</h3>
+        <h5></h5>
+      </div>
+        <a href=""><div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div></a>
+	<form action="" id="search-form2" class="navbar-form form-inline" method="post" onSubmit="return false">
+      <div class="sDiv">
+        <div class="sDiv2">           
+          
+
+          <!-- <input type="text" size="30" name="key_word" class="qsbox" placeholder="搜索词..."> -->
+          <!-- <input type="button" onClick="ajax_get_table('search-form2',1)" class="btn" value="搜索"> -->
+        </div>
+      </div>
+     </form>
+    </div>
+    <div class="hDiv">
+      <div class="hDivBox">
+        <table cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th class="sign" axis="col6" onclick="checkAllSign(this)">
+                <div style="width: 24px;"><i class="ico-check"></i></div>
+              </th>
+              <th align="left" abbr="article_title" axis="col6" class="">
+                <div style="text-align: left; width:65px;" class="">操作</div>
+              </th>   
+
+              <th align="left" abbr="ac_id" axis="col4" class="">
+                <div style="text-align: left; width: 240px;" class="">商品名称</div>
+              </th>
+              <th align="center" abbr="article_time" axis="col6" class="">
+                <div style="text-align: center; width: 60px;" class="">分类</div>
+              </th>
+              <th align="center" abbr="article_time" axis="col6" class="">
+                <div style="text-align: center; width: 50px;" class="">售价</div>
+              </th> 
+              <th align="center" abbr="article_time" axis="col6" class="">
+                <div style="text-align: center; width: 50px;" class="">市场价</div>
+              </th> 
+              <th align="center" abbr="article_time" axis="col6" class="">
+                <div style="text-align: center; width: 50px;" class="">成本价</div>
+              </th>  
+              <th align="center" abbr="article_time" axis="col6" class="">
+                <div style="text-align: center; width: 50px;" class="">库存</div>
+              </th>  
+              <th align="center" abbr="article_time" axis="col6" class="">
+                <div style="text-align: center; width: 50px;" class="">动作</div>
+              </th> 
+              <th align="center" abbr="article_time" axis="col6" class="">
+                <div style="text-align: center; width: 60px;" class="">操作员</div>
+              </th>   
+              <th align="center" abbr="article_time" axis="col6" class="">
+                <div style="text-align: center; width: 60px;" class="">审批员</div>
+              </th>    
+              <th align="center" abbr="article_time" axis="col6" class="">
+                <div style="text-align: center; width: 60px;" class="">状态</div>
+              </th>   
+              <th align="center" abbr="article_time" axis="col6" class="">
+                <div style="text-align: center; width: 120px;" class="">操作时间</div>
+              </th>      
+              <th style="width:100%" axis="col7">
+                <div></div>
+              </th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>    
+    <div class="tDiv">
+      <div class="tDiv2">
+        <div class="fbutton">       
+          <a href="{:U('Admin/goods/addEditGoods')}">
+          <div class="add" title="添加商品">
+            <span><i class="fa fa-plus"></i>添加商品</span>
+          </div>
+          </a>          
+          </div> 
+        <!-- <div class="fbutton">
+            <a href="{:U('Admin/Goods/initGoodsSearchWord')}">
+                <div class="add" title="初始化商品搜索关键词">
+                    <span><i class="fa fa-plus"></i>初始化商品搜索关键词</span>
+                </div>
+            </a>
+        </div> -->
+        <div class="fbutton">
+          <a href="javascript:;" onclick="publicHandleAll('del')">
+              <div class="add" title="批量删除">
+                  <span>批量删除</span>
+              </div>
+          </a>
+      </div>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+    <div class="bDiv" style="height: auto;">
+     <!--ajax 返回 --> 
+      <div id="flexigrid" cellpadding="0" cellspacing="0" border="0" data-url="{:U('admin/goods/delGoods')}"></div>
+    </div>
+
+     </div>
+</div>
+<script>
+    $(document).ready(function(){
+		// 刷选条件 鼠标 移动进去 移出 样式
+		$(".hDivBox > table > thead > tr > th").mousemove(function(){
+			$(this).addClass('thOver');
+		}).mouseout(function(){
+			$(this).removeClass('thOver');
+		});
+
+        // 表格行点击选中切换
+        $(document).on('click','#flexigrid > table>tbody >tr',function(){
+            $(this).toggleClass('trSelected');
+            var checked = $(this).hasClass('trSelected');
+            $(this).find('input[type="checkbox"]').attr('checked',checked);
+        });
+	});
+
+    $(document).ready(function () {
+        // ajax 加载商品列表
+        ajax_get_table('search-form2', 1);
+
+    });
+
+    // ajax 抓取页面 form 为表单id  page 为当前第几页
+    function ajax_get_table(form, page) {
+        cur_page = page; //当前页面 保存为全局变量
+        $.ajax({
+            type: "POST",
+            url: "/index.php?m=Admin&c=goodsLog&a=ajaxList&p=" + page,//+tab,
+            data: $('#' + form).serialize(),// 你的formid
+            success: function (data) {
+                $("#flexigrid").html('');
+                $("#flexigrid").append(data);
+            }
+        });
+    }
+	
+</script>
+</body>
+</html>

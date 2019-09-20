@@ -1,0 +1,9 @@
+.idea/
+composer.lock
+*.log
+runtime/
+public/upload/
+application/database.php
+application/api/logic/SmsLogic.php
+application/api/logic/AlipayLogic.php
+application/common/logic/ShippingLogic.php

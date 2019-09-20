@@ -1,0 +1,46 @@
+<!-- 文章页 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <script src="./src/js/rem.js"></script>
+    <style>
+        .content {
+            padding: .2rem;
+        }
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="content"></div>
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="./src/js/global.js"></script>
+    <script>
+        let myUsetInfo = localStorage.getItem('USERINFO');
+        myUsetInfo = JSON.parse(myUsetInfo);
+        console.log(myUsetInfo)
+        const article_id = getParam('article_id');
+        setTimeout(function () {
+            $.ajax({
+            type: 'POST',
+                url: GlobalHost + '/Api/article/getContent',
+                data: {
+                    article_id: article_id
+                },
+                success: function (res) {
+                    console.log(res)
+                    $('.content').html(res.data.content)
+                    $('title').text(res.data.title)
+                }
+            })
+        }, 200)
+    </script>
+</body>
+</html>

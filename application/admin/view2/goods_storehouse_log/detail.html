@@ -1,0 +1,327 @@
+<include file="public/layout" />
+<!--物流配置 css -start-->
+<style>
+    ul.group-list {
+        width: 96%;min-width: 1000px; margin: auto 5px;list-style: disc outside none;
+    }
+    .err{color:#F00; display:none;}
+    ul.group-list li {
+        white-space: nowrap;float: left;
+        width: 150px; height: 25px;
+        padding: 3px 5px;list-style-type: none;
+        list-style-position: outside;border: 0px;margin: 0px;
+    }
+    .row .table-bordered td .btn,.row .table-bordered td img{
+        vertical-align: middle;
+    }
+    .row .table-bordered td{
+      padding: 8px;
+      line-height: 1.42857143;
+    }
+    .table-bordered{
+      width: 100%
+    }
+    .table-bordered tr td{
+      border: 1px solid #f4f4f4;
+    }
+    .btn-success {
+        color: #fff;background-color: #449d44;border-color: #398439 solid 1px;
+    }
+    .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.col-xs-8 {
+    width: 66.66666667%;
+}
+.col-xs-4 {
+    width: 33.33333333%;
+}
+.col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    float: left;
+}
+.row .tab-pane h4{
+  padding: 10px 0;
+}
+.row .tab-pane h4 input{
+  vertical-align: middle;
+} 
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+.ncap-form-default .title{
+  border-bottom: 0
+}
+.ncap-form-default dl.row, .ncap-form-all dd.opt{
+    /*border-color: #F0F0F0;*/
+    border: none;
+}
+.ncap-form-default dl.row:hover, .ncap-form-all dd.opt:hover{
+    border: none;box-shadow: inherit;
+}
+.addprine{display: inline; }
+.alisth{margin-top: 10px}
+.p_plus strong{cursor: pointer;margin-left: 4px;}
+</style>
+<!--物流配置 css -end-->
+<!--以下是在线编辑器 代码 -->
+<load href="__ROOT__/public/plugins/Ueditor/ueditor.config.js"/>
+<load href="__ROOT__/public/plugins/Ueditor/ueditor.all.min.js"/>
+<script type="text/javascript" charset="utf-8" src="__ROOT__/public/plugins/Ueditor/lang/zh-cn/zh-cn.js"></script>
+<!--以上是在线编辑器 代码  end-->
+<body style="background-color: #FFF; overflow: auto;">
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page">
+    <div class="fixed-bar">
+        <div class="item-title">
+                <a class="back" href="javascript:history.back();" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+            <div class="subject">
+                <h3>商品调库记录详情</h3>
+                <h5></h5>
+            </div>
+        </div>
+    </div>
+    <!-- 操作说明 -->
+    <div class="explanation" id="explanation">
+        <div class="title" id="checkZoom"><i class="fa fa-lightbulb-o"></i>
+            <h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+            <span id="explanationZoom" title="收起提示"></span> </div>
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+    <!--表单数据-->
+    <form method="post" id="form">
+        <input type="hidden" value="{$Request.param.is_distribut}" name="is_distribut" class="input-txt"/>
+        <!--通用信息-->
+        <div class="ncap-form-default tab_div_1">
+            <dl class="row">
+                <dt class="tit">
+                    <label for="record_no">商品名称</label>
+                </dt>
+                <dd class="opt">
+                    {$info.goods_name}
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="store_name">原始库房</label>
+                </dt>
+                <dd class="opt">
+                    {$storehouselist[$info.storehouse_id]}                    
+                </dd>
+            </dl> 
+            <dl class="row">
+                <dt class="tit">
+                    <label for="store_name">调到库房</label>
+                </dt>
+                <dd class="opt">
+                    {$storehouselist[$info.new_storehouse_id]}     
+                </dd>
+            </dl> 
+			<dl class="row">
+                <dt class="tit">
+                    <label for="record_no">审核状态</label>
+                </dt>
+                <dd class="opt">
+                    <if condition="$info.status eq 0">待审核</if>
+                    <if condition="$info.status eq 1">已通过</if>
+                    <if condition="$info.status eq 2">已拒绝</if>
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="tit">
+                    <label for="record_no">调动时间</label>
+                </dt>
+                <dd class="opt">                
+                    {$info.add_time|date='Y-m-d H:i',###}
+                </dd>
+            </dl> 
+
+            <dl class="row">
+                <dt class="tit">
+                    <label for="record_no">操作员</label>
+                </dt>
+                <dd class="opt">                
+                    {$admin[$info.admin_id]}   
+                </dd>
+            </dl> 
+
+            <dl class="row">
+                <dt class="tit">
+                    <label for="record_no">审核员</label>
+                </dt>
+                <dd class="opt">                
+                    {$admin[$info.approver_id]}   
+                </dd>
+            </dl>     
+
+            <dl class="row">
+                <dt class="tit">
+                    <label for="record_no">调动时间</label>
+                </dt>
+                <dd class="opt">                
+                    {$info.approve_time|date='Y-m-d H:i',###}
+                </dd>
+            </dl>   
+
+                                                                                                                                         
+        </div>
+        <!--通用信息-->
+ 
+
+        <div class="ncap-form-default">        
+            <div class="bot">            
+                <input type="hidden" name="id" value="{$info.id}">
+                
+                <if condition="$info.status eq 0">
+
+                <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" onClick="ajax_submit_form('form','{:U('GoodsStorehouseLog/approve', array('status'=>1))}');">通过</a>
+
+                <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" onClick="ajax_submit_form('form','{:U('GoodsStorehouseLog/approve', array('status'=>2))}');">拒绝</a>
+                
+                </if>
+            </div>
+        </div> 
+     </form>
+    <!--表单数据-->
+</div>
+<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+<script>
+    //选择分类
+    $(function(){
+        $(document).on("change",'#cat_id',function(){
+            // get_category($(this).val(),'cat_id_2','0');
+            // $('#cat_id_3').empty().html("<option value='0'>请选择商品分类</option>");
+            getCategoryBindList($(this).val());
+        })
+    })
+    $(function(){
+        $(document).on("change",'#extend_cat_id',function(){
+            get_category($(this).val(),'extend_cat_id_2','0');
+            $('#extend_cat_id_3').empty().html("<option value='0'>请选择商品分类</option>");
+        })
+    })
+
+    function getCategoryBindList(val){
+        $.ajax({
+            'url':"{:U('goods/getCategoryBindList')}",
+            'data':{cart_id:val},
+            'dataType':'json',
+            success:function(data){
+                if(data.status == 1){
+                        var html = '<option value="">所有品牌</option>'
+                    for (var i=0 ;i<data.result.length;i++){
+                            html += '<option value="'+data.result[i].id+'">'+data.result[i].name+'</option>'
+                    }
+                    $('#brand_id').html('');
+                    $('#brand_id').html(html);
+                }
+            }
+        })
+    }
+
+    $(function(){
+        $(document).on("click",'.is_virtual',function(){
+            initIsVirtual();
+        })
+    })
+    // 物流设置相 关
+     $(document).ready(function(){
+        $(":checkbox[cka]").click(function(){
+            var $cks = $(":checkbox[ck='"+$(this).attr("cka")+"']");
+            if($(this).is(':checked')){
+                $cks.each(function(){$(this).prop("checked",true);});
+            }else{
+                $cks.each(function(){$(this).removeAttr('checked');});
+            }
+        });
+    });
+    
+     var url="{:url('Admin/Ueditor/index',array('savePath'=>'goods'))}";
+     var ue = UE.getEditor('goods_content',{
+         serverUrl :url,
+         zIndex: 999,
+         initialFrameWidth: "100%", //初化宽度
+         initialFrameHeight: 300, //初化高度            
+         focus: false, //初始化时，是否让编辑器获得焦点true或false
+         maximumWords: 99999, removeFormatAttributes: 'class,style,lang,width,height,align,hspace,valign',//允许的最大字符数 'fullscreen',
+         pasteplain:false, //是否默认为纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
+         autoHeightEnabled: true
+     });
+     
+    // 物流设置相 关
+    function choosebox(o){
+        var vt = $(o).is(':checked');
+        if(vt){
+            $('input[type=checkbox]').prop('checked',vt);
+        }else{
+            $('input[type=checkbox]').removeAttr('checked');
+        }
+    }
+
+
+
+/** 以下 商品规格相关 js*/
+$(document).ready(function(){
+
+    // 商品模型切换时 ajax 调用  返回不同的属性输入框
+    $("#spec_type").change(function(){        
+        var goods_id = '{$info.goods_id}';
+        var spec_type = $(this).val();
+            $.ajax({
+                    type:'GET',
+                    data:{goods_id:goods_id,spec_type:spec_type}, 
+                    url:"{:U('admin/Goods/ajaxGetSpecSelect')}",
+                    success:function(data){                            
+                           $("#ajax_spec_data").html('')
+                           $("#ajax_spec_data").append(data);
+			   ajaxGetSpecInput();	// 触发完  马上触发 规格输入框
+                    }
+            });           
+            //商品类型切换时 ajax 调用  返回不同的属性输入框     
+            $.ajax({
+                 type:'GET',
+                 data:{goods_id:goods_id,type_id:spec_type}, 
+                 url:"/index.php/admin/Goods/ajaxGetAttrInput",
+                 success:function(data){                            
+                         $("#goods_attr_table tr:gt(0)").remove()
+                         $("#goods_attr_table").append(data);
+                 }        
+           });
+    });
+	// 触发商品规格
+	$("#spec_type").trigger('change'); 
+	
+    $("input[name='exchange_integral']").blur(function(){
+        var shop_price = parseInt($("input[name='shop_price']").val());
+        var exchange_integral = parseInt($(this).val());
+        if (shop_price * 100 < exchange_integral) {
+        	
+        }
+    });
+});
+
+
+</script>
+</body>
+</html>

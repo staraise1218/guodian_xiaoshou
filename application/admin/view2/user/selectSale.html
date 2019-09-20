@@ -1,0 +1,134 @@
+<include file="public/layout"/>
+<style>
+    .te_le .dataTables_paginate{float: left;}
+    .bot{float: right;padding: 15px 0}
+</style>
+<body style="background-color: rgb(255, 255, 255); overflow: auto; cursor: default; -moz-user-select: inherit; min-width: 600px;">
+<div class="page" style="padding: 0px 1% 0 1%; min-width: 600px;">
+    <!-- 操作说明 -->
+    <div class="flexigrid">
+        <div class="mDiv">
+            <div class="ftitle">
+                <h3>选择销售</h3>
+                <h5>(共{$page->totalRows}条记录)</h5>
+            </div>
+            <div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>
+            <form class="navbar-form form-inline" id="search-form2" action="{:U('user/selectSale')}" method="get">
+                <input type="hidden" name="user_id_array" value="{$Request.param.user_id_array}">
+
+                <div class="sDiv">
+                    <div class="sDiv2">
+                        <input size="30" name="keyword" value="{$Request.param.keyword}" class="qsbox" placeholder="姓名" type="text">
+                        <input class="btn" value="搜索" type="submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="hDiv">
+            <div class="hDivBox">
+                <table cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th abbr="article_title" axis="col3" class="" align="left">
+                            <div style="text-align: left; width: 50px;" class=""><input type="checkbox" class="checkAll" style="display: none"></div>
+                        </th>
+                        <th abbr="article_time" axis="col6" class="" align="left">
+                            <div style="text-align: left; width: 200px;" class="">姓名</div>
+                        </th>
+                        <th abbr="ac_id" axis="col4" class="" align="left">
+                            <div style="text-align: center; width: 100px;" class="">手机号</div>
+                        </th>
+                        <th style="width:100%" axis="col7">
+                            <div></div>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="bDiv" style="height: auto; ">
+            <div id="flexigrid" cellpadding="0" cellspacing="0" border="0">
+                <table>
+                    <tbody id="goos_table">
+                    <volist name="list" id="item">
+                        <tr>
+                            <td class="" align="left">
+                                <div style="text-align: left; width: 50px;">
+                                   <input class="checkItem" type="radio" name="admin_id" value="{$item.admin_id}"/>
+                               </div>
+                            </td>
+                            <td class="" align="left">
+                                <div style="text-align: left; width: 200px;">{$item.realname}</div>
+                            </td>
+                            <td class="" align="left">
+                                <div style="text-align: center; width: 100px;">{$item.phone}</div>
+                            </td>
+                           
+                            <td class="" style="width: 100%;" align="">
+                                <div>&nbsp;</div>
+                            </td>
+                        </tr>
+                      
+                    </volist>
+                    </tbody>
+                </table>
+            </div>
+            <div class="iDiv" style="display: none;"></div>
+        </div>
+        <!--分页位置-->
+        <div class="te_le">
+            {$page->show()}
+        </div>
+        <div class="bot"><a onclick="select_sales();" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
+    </div>
+</div>
+<script>
+
+    //全选选中事件
+    $(function () {
+        $(document).on("click", '.checkAll', function (e) {
+            if($(this).is(':checked')){
+                $('.checkItem').each(function(i,o){
+                    $(o).attr('checked','checked');
+                })
+            }else{
+                $('.checkItem').each(function(i,o){
+                    $(o).removeAttr('checked');
+                })
+            }
+        })
+    })
+
+
+    function select_sales()
+    {
+        var inputs = $("input[class='checkItem']:checked");
+        if (inputs.length == 0) {
+            layer.alert('请选择销售', {icon: 2}); //alert('请选择商品');
+            return false;
+        }
+
+        var admin_id = inputs.val();
+        var user_id_array = $('input[name=user_id_array]').val();
+
+        layer.load(2);
+
+        $.ajax({
+            url: '{:U("user/doAssignSale")}',
+            type: 'post',
+            dataType: 'json',
+            data: {admin_id: admin_id, user_id_array: user_id_array},
+            success: function(data){
+                layer.closeAll('loading');
+                if(data.code == 200){
+                    layer.msg('操作成功', {icon:1}, function(){
+                        window.parent.call_back_for_selectSale();
+                    });
+
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>

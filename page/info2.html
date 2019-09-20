@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>结算中心</title>
+    <script src="./src/js/rem.js"></script>
+    <link rel="stylesheet" href="./src/css/public.css">
+    <link rel="stylesheet" href="./src/css/global.css">
+    <link rel="stylesheet" href="./src/css/info.css">
+    <link rel="stylesheet" href="./src/css/date.css">
+</head>
+<body>
+
+    <!-- 顶部 -->
+    <div class="topBar">
+        <img src="./src/img/icon/back.png" alt="" class="icon-df back">
+        <p class="text-df">完善信息</p>
+        <div class="right">
+            <!-- <img class="icon-df" src="./src/img/icon/share.png" alt=""> -->
+            <!-- <img class="icon-df m-l" src="./src/img/icon/message.png" alt=""> -->
+        </div>
+    </div>
+    <!-- 顶部 END -->
+
+    <div class="_top">
+        <div class="con">
+            <p>完善您的信息</p>
+            <p>以便我们更好的为您服务</p>
+            <p>完善全部信息可获得500积分奖励</p>
+        </div>
+    </div>
+
+
+    
+    <ul class="list_wrap">
+        <li class="list_item">
+            <div class="l">
+                <p>姓名</p>
+            </div>
+            <div class="r">
+                <p data-status="name">完善后不可修改</p>
+                <i></i>
+            </div>
+        </li>
+        <li class="list_item">
+            <div class="l">
+                <p>性别</p>
+            </div>
+            <div class="r">
+                <p data-status="sex">未完善</p>
+                <i></i>
+            </div>
+        </li>
+        <li class="list_item">
+            <div class="l">
+                <p>身份证号</p>
+            </div>
+            <div class="r">
+                <p data-status="idCard">未完善</p>
+                <i></i>
+            </div>
+        </li>
+        <li class="list_item">
+            <div class="l">
+                <p>手机号</p>
+            </div>
+            <div class="r">
+                <p data-status="phone">未完善</p>
+                <i></i>
+            </div>
+        </li>
+        <li class="list_item">
+            <div class="l">
+                <p>生日</p>
+            </div>
+            <div class="r">
+                <p  id="trigger1">完善后不可修改</p>
+                <i></i>
+            </div>
+        </li>
+    </ul>
+
+
+
+
+
+    <div class="bg" style="display: none"></div>
+    <div class="name_save save" style="display: none">
+        <div class="title">
+            <div class="l">
+                <p>完善姓名</p>
+            </div>
+            <div class="r">
+                <img src="./src/img/icon/x.png" alt="">
+            </div>
+        </div>
+        <div class="inp">
+            <input type="text" id="save_name" placeholder="输入您的姓名">
+            <p>姓名完善后不可修改</p>
+        </div>
+        <div class="sub">
+            <button>确定</button>
+        </div>
+    </div>
+
+
+
+
+    <div class="save_phone save" style="display: none">
+        <div class="title">
+            <div class="l">
+                <p>完善手机号</p>
+            </div>
+            <div class="r">
+                <img src="./src/img/icon/x.png" alt="">
+            </div>
+        </div>
+        <div class="inp">
+            <input type="text" id="info_user_name" placeholder="输入您的手机号">
+            <!-- <p>姓名完善后不可修改</p> -->
+        </div>
+        <div class="sub">
+            <button>确定</button>
+        </div>
+    </div>
+
+    <div class="save_IDcard save" style="display: none">
+        <div class="title">
+            <div class="l">
+                <p>完善身份证</p>
+            </div>
+            <div class="r">
+                <img src="./src/img/icon/x.png" alt="">
+            </div>
+        </div>
+        <div class="inp">
+            <input type="text" id="info_IDname" placeholder="输入您的真实姓名">
+        </div>
+        <div class="inp">
+            <input type="text" id="info_IDcard" placeholder="输入您的身份证">
+        </div>
+        <div class="sub">
+            <button>确定</button>
+        </div>
+    </div>
+
+    <div class="save save_sex" style="display: none">
+        <div class="item" data-sex="male">男</div>
+        <div class="item" data-sex="female">女</div>
+        <div class="item sub" data-sex="sub">取消</div>
+    </div>
+
+
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/store.js/1.3.20/store.min.js"></script>
+    <script src="./src/js/global.js"></script>
+    <script src="./src/js/date.js"></script>
+    <script src="./src/js/info2.js"></script>
+</body>
+</html>

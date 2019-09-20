@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>编辑地址</title>
+    <script src="./src/js/rem.js"></script>
+    <link rel="stylesheet" href="./src/css/global.css">
+    <link rel="stylesheet" href="./src/css/public.css">
+    <link rel="stylesheet" href="./src/css/addressEdit.css">
+</head>
+<body>
+    <!-- 顶部 -->
+    <div class="topBar">
+        <img src="./src/img/icon/back.png" alt="" class="icon-df back">
+        <p class="text-df">编辑地址</p>
+        <div class="right del-btn">删除</div>
+    </div>
+    <!-- 顶部 END -->
+    
+    <!-- address con -->
+    <div class="addres-content">
+        <div class="change_userName item text-df bd-df pd-df">
+            <p class="op-4 h-xs">收货人</p>
+            <p class="user_name_con w-lg h-xs">收货人</p>
+        </div>
+        <div class="change_userPhone item text-df bd-df pd-df">
+            <p class="op-4 h-xs">手机号码</p>
+            <p class="user_phone_con w-lg h-xs">请输入手机号</p>
+        </div>
+        <div class="item text-df bd-df pd-df more-xs" id="address-alert">
+            <p class="op-4 h-xs">地址</p>
+            <p class="address-con_ w-lg h-xs">省-市-区 </p>
+        </div>
+        <div class="change_address item text-df bd-df pd-df">
+            <p class="op-4 h-xs">详细地址</p>
+            <p class="user_address_con w-lg h-xs">详细地址</p>
+        </div>
+        <p class="text-xs pd-df c-warn">默认地址</p>
+    </div>
+
+
+    <!-- submit -->
+    <div class="submit-wrap">
+        <div class="submit submit_address">保存</div>
+    </div>
+
+
+
+
+    <!-- alert -->
+    <div class="alert-box" style="display: none"></div>
+    <!-- alert address -->
+    <div class="alert-address text-df" style="display: none">
+        <div class="tips-top">
+            <img src="./src/img/icon/x.png" class="close icon-lg">
+            <p class="text-center">选择所在地区</p>
+            <i>确定</i>
+        </div>
+        <ul class="choose">
+            <!-- <li class="item active">北京市</li> -->
+            <!-- <li class="item">北京市</li>
+            <li class="item">北京市</li> -->
+        </ul>
+        <div class="loading">正在加载...</div>
+        <div class="content text-xs">
+            <ul class="province">
+                <!-- <li class="active">北京市</li>
+                <li>北京市</li> -->
+            </ul>
+            <ul class="city">
+                <!-- <li>内蒙古自治区</li>
+                <li>市辖区</li> -->
+            </ul>
+            <ul class="district">
+                <!-- <li>内蒙古自治区</li>
+                <li>市辖区</li> -->
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- alert -->
+    <div class="alert-box-del" style="display: none"></div>
+    <!-- 删除弹窗 -->
+    <div class="alert-del" style="display: none">
+        <p class="text-center">是否要删除该地址！</p>
+        <div class="ctr">
+            <span class="cancel">取消</span>
+            <span class="del">删除</span>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="alert-wrapper user-wrapper" style="display: none">
+        <div class="alert-content">
+            <div class="be-center-2">
+                <p class=" w-df">用户姓名</p>
+                <img class="close-icon user-close" src="./src/img/icon/x.png" alt="">
+            </div>
+            <input id="change_info" type="text" placeholder="请添加联系人姓名"> 
+            <input id="alert-submit" type="button" value="确定" class="submit">
+        </div>
+    </div>
+
+
+
+    <div class="alert"></div>
+
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="./src/js/global.js"></script>
+    <script src="./src/js/addressEdit_2.js"></script>
+</body>
+</html>

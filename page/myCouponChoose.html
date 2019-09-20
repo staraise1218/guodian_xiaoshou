@@ -1,0 +1,119 @@
+<!-- 选择优惠券 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选择优惠券</title>
+    <script src="./src/js/rem.js"></script>
+    <link rel="stylesheet" href="./src/css/global.css">
+    <link rel="stylesheet" href="./src/css/myCoupon.css">
+</head>
+
+<body>
+    <!-- 顶部 -->
+    <div class="topBar">
+        <img src="./src/img/icon/back.png" alt="" class="icon-df back">
+        <p class="text-df title">选择优惠券</p>
+        <div class="right">
+            <!-- 激活 -->
+        </div>
+    </div>
+    <!-- 顶部 END -->
+    <div class="content">
+        <!-- 已使用 -->
+        <ul class="list-wrap weishiyong" style="display: block">
+            <!-- <li>
+                <div>
+                    <p>
+                        <i>￥</i><b>100</b>
+                    </p>
+                    <p>指定商品 <span>满￥999可用</span></p>
+                </div>
+                <div>
+                    2019-05-01 19:00:23-2019-05-31 19:00:23
+                </div>
+            </li> -->
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="./src/js/global.js"></script>
+    <script>
+let myUsetInfo = localStorage.getItem('USERINFO');
+    myUsetInfo = JSON.parse(myUsetInfo);
+let user_id = myUsetInfo.user_id;
+let page = 1;
+let action = getParam('action');
+let goods_id = getParam('goods_id');
+let item_id = getParam('item_id');
+let goods_num = getParam('goods_num');
+
+getorderInfo() 
+// 获取订单详细信息
+function getorderInfo() {
+    $.ajax({
+        type: 'POST',
+        url: GlobalHost + '/Api/cart/cart2',
+        data: {
+            user_id: user_id,
+            goods_id: goods_id,
+            action: action,
+            item_id: item_id,
+            goods_num: goods_num
+        },
+        success: function (res) {
+            console.log(res)
+            let list = '';
+            res.data.couponList.forEach( item => {
+                var endTime = formatDateCom(item.send_time)
+                list += `<li data-id="${item.id}" data-cid="${item.cid}" data-name="${item.coupon.name}">
+                            <div>
+                                <p>
+                                    <i>￥</i><b>${item.coupon.money}</b>
+                                </p>
+                                <p><span>${item.coupon.name}</span></p>
+                            </div>
+                            <div>
+                                ${endTime}
+                            </div>
+                        </li>`
+            })
+            $('.weishiyong').html(list)
+        }
+    })
+}
+
+
+$('.weishiyong').delegate('li','click', function () {
+    console.log($(this).attr('data-id'))
+    let YH = {
+        title: '选择优惠券',
+        STATUS: 1, // 1 选择， 2 渲染完成
+        id: $(this).attr('data-id'),
+        cid: $(this).attr('data-cid'),
+        name: $(this).attr('data-name')
+    }
+    localStorage.setItem('YH', JSON.stringify(YH));
+    window.history.back(-1);
+})
+
+
+
+
+
+
+    </script>
+</body>
+</html>

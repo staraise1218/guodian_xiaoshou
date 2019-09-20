@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container"></div>
+
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="./src/js/global.js"></script>
+    <script>
+        let payMsg = '';
+        if(getParam('status') == 'pay') {
+            console.log(localStorage.getItem('payMsg'))
+        }
+        $('html').html(localStorage.getItem('payMsg'))
+
+    </script>
+
+
+
+    
+</body>
+</html>

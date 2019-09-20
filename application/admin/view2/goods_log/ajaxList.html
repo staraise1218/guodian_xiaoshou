@@ -1,0 +1,120 @@
+<table>
+       <tbody>
+            <volist name="goodsList" id="list">
+              <tr data-id="{$list[goods_id]}">
+                <td class="sign" axis="col6">
+                  <div style="width: 24px;"><i class="ico-check"></i></div>
+                </td>
+			      <td class="handle" >
+                <div style="text-align:left;   min-width:50px !important; max-width:inherit !important;">
+                  <span class="btn"><em><i class="fa fa-cog"></i>操作<i class="arrow"></i></em>
+                  <ul>
+                    
+                    <li><a href="{:U('Admin/GoodsLog/detail',array('id'=>$list['id']))}">查看详情</a></li>             
+                  </ul>
+                  </span>
+                </div>
+              </td>                
+          
+                <td align="center" axis="col0">
+                  <div style="text-align: left; width: 240px;"><if condition="$list[is_virtual] eq 1"><span class="type-virtual" title="虚拟兑换商品">虚拟</span></if>{$list.goods_name|getSubstr=0,33}</div>
+                </td>
+                <td align="center" axis="col0">
+                  <div style="text-align: center; width: 60px;">{$catList[$list[cat_id]][name]}</div>
+                </td>
+                <td align="center" axis="col0">
+                  <div style="text-align: center; width: 50px;">{$list.shop_price}</div>
+                </td>   
+                <td align="center" axis="col0">
+                  <div style="text-align: center; width: 50px;">{$list.market_price}</div>
+                </td>   
+                <td align="center" axis="col0">
+                  <div style="text-align: center; width: 50px;">{$list.cost_price}</div>
+                </td>
+                  
+                <td align="center" axis="col0">                  
+                  <div style="text-align: center; width: 50px; ">
+                    {$list.store_count}
+                  </div>
+                </td>   
+                  
+                <td align="center" axis="col0">                  
+                  <div style="text-align: center; width: 50px; ">
+                   <if condition="$list.action eq 1">新增</if>
+                    <if condition="$list.action eq 2">修改</if>
+                  </div>
+                </td> 
+
+               <td align="center" axis="col0">                  
+                  <div style="text-align: center; width: 60px; ">
+                    {$list.admin_realname}
+                  </div>
+                </td> 
+
+               <td align="center" axis="col0">                  
+                  <div style="text-align: center; width: 60px; ">
+                    {$list.approver_realname}
+                  </div>
+                </td> 
+
+               <td align="center" axis="col0">                  
+                  <div style="text-align: center; width: 60px; ">
+                    <if condition="$list.status eq 0">待审核</if>
+                    <if condition="$list.status eq 1">已通过</if>
+                    <if condition="$list.status eq 2">已作废</if>
+                  </div>
+                </td> 
+                  
+                <td align="center" axis="col0">                  
+                  <div style="text-align: center; width: 120px; ">
+                    {$list.change_time|date="Y-m-d H:i",###}
+                  </div>
+                </td>
+                     
+                <td align="" class="" style="width: 100%;">
+                  <div>&nbsp;</div>
+                </td>
+              </tr>
+            </volist>             
+          </tbody>
+        </table>
+        <!--分页位置--> {$page}
+		<script>
+            // 点击分页触发的事件
+            $(".pagination  a").click(function(){
+                cur_page = $(this).data('p');
+                ajax_get_table('search-form2',cur_page);
+            });
+			
+			/*
+			 * 清除静态页面缓存
+			 */
+			function ClearGoodsHtml(goods_id)
+			{
+				$.ajax({
+						type:'GET',
+						url:"{:U('Admin/System/ClearGoodsHtml')}",
+						data:{goods_id:goods_id},
+						dataType:'json',
+						success:function(data){
+							layer.alert(data.msg, {icon: 2});								 
+						}
+				});
+			}
+			/*
+			 * 清除商品缩列图缓存
+			 */
+			function ClearGoodsThumb(goods_id)
+			{
+				$.ajax({
+						type:'GET',
+						url:"{:U('Admin/System/ClearGoodsThumb')}",
+						data:{goods_id:goods_id},
+						dataType:'json',
+						success:function(data){
+							layer.alert(data.msg, {icon: 2});								 
+						}
+				});
+			}		
+			
+        </script>

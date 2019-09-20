@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的订单</title>
+    <script src="./src/js/rem.js"></script>
+    <link rel="stylesheet" href="./src/css/global.css">
+    <link rel="stylesheet" href="./src/css/order.css">
+</head>
+
+<body>
+    <!-- 顶部 -->
+    <div class="topBar">
+        <img src="./src/img/icon/back.png" alt="" class="icon-df back">
+        <p class="text-df">我的订单</p>
+        <div class="right">
+            <!-- <img class="icon-df" src="./src/img/icon/share.png" alt=""> -->
+            <img class="icon-df m-l back" src="./src/img/icon/message.png" alt="">
+        </div>
+    </div>
+    <!-- 顶部 END -->
+
+    <ul class="tabBar text-df">
+        <li data-type="ALL" class="active ALL_">全部</li>
+        <li data-type="WAITPAY" class="WAITPAY_">待付款</li>
+        <li data-type="WAITRECEIVE" class="WAITRECEIVE_">待收货</li>
+        <li data-type="FINISH" class="FINISH_">已完成</li>
+        <li data-type="CANCEL" class="CANCEL_">已取消</li>
+    </ul>
+    
+    <div class="content">
+        <p class="warning text-xs color-3">防诈骗提醒：国典商城不会以任何理由发送链接要求您填写个人银行信息进行退款。谨防假冒客服电话诈骗！</p>
+        <div class="tips" style="display: none">
+            <img src="./src/img/icon/tips_empty.png" alt="">
+        </div>
+        <!-- 全部 -->
+        <ul class="item-wrap text-df ALL" data-type="ALL">
+            <!-- <li>
+                <p class="btc">
+                    <span>订单号：666666</span>
+                    <span class="status">成功</span>
+                </p>
+                <ul>
+                    <li>
+                        <div class="shop-wrap border-bottom">
+                            <div class="poster">
+                                <img src="./src/img/1.png" alt="">
+                            </div>
+                            <div class="right">
+                                <p class="text-df">标题</p>
+                                <p class="text-df color_3">副标题</p>
+                                <p class="text-df color_3">副标题</p>
+                                <div class="text-xs color_3 tag-wrap">
+                                    <p class="tag">标签</p>
+                                    <p class="num">x1</p>
+                                </div>
+                                <p class="price">￥123</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="ctr">
+                    <p class="title">订单金额：￥1231231231</p>
+                    <div class="btn-wrap">
+                        <span class="btn">去付款</span>
+                    </div>
+                </div>
+            </li> -->
+        </ul>
+        <!-- 待付款 -->
+        <ul class="item-wrap text-df WAITPAY" data-type="WAITPAY" style="display: none"></ul>
+        <!-- 待收货 -->
+        <ul class="item-wrap text-df WAITRECEIVE" data-type="WAITRECEIVE" style="display: none"></ul>
+        <!-- 已完成 -->
+        <ul class="item-wrap text-df FINISH" data-type="FINISH" style="display: none"></ul>
+        <!-- 已取消 -->
+        <ul class="item-wrap text-df CANCEL" data-type="CANCEL" style="display: none"></ul>
+    </div>
+
+    <!-- 猜你喜欢 -->
+    <div class="title">猜你喜欢</div>
+    <ul class="recommend"></ul>
+    <!-- 猜你喜欢 END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="tips_loading" style="display: none">物流信息加载中...</div>
+    <div class="alert-box" style="display: none"></div>
+    <div class="alert-yunshu" style="display: none"></div>
+    <div class="alert-tips"></div>
+
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="./src/js/global.js"></script>
+    <script src="./src/js/order.js"></script>
+</body>
+
+</html>

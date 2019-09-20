@@ -1,0 +1,102 @@
+<!-- 支付成功失败反馈页面 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./src/js/rem.js"></script>
+    <link rel="stylesheet" href="./src/css/global.css">
+    <style>
+        body {
+            padding-top: 1rem;
+            background: #fff;
+            box-sizing: border-box;
+            padding-bottom: 2rem;
+        }
+        .topBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: .8rem;
+            background: #fff;
+            z-index: 1;
+            /* border-bottom: .2rem solid #F5F5F5; */
+        }
+        .topBar img {
+            position: absolute;
+            left: .1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .topBar p {
+            width: 100%;
+            text-align: center;
+            line-height: .8rem;
+        }
+        .topBar .right {
+            position: absolute;
+            right: .2rem;
+            top: 50%;
+            transform: translateY(-50%)
+        }
+        .topBar .right p {
+            font-size: .25rem
+        }
+
+
+
+        .content {
+            position: absolute;
+            left: 50%;
+            top: 200px;
+            transform: translateX(-50%)
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部 -->
+    <div class="topBar">
+        <img src="./src/img/icon/back.png" alt="" class="icon-df back2">
+        <p class="text-df title">结算中心</p>
+        <div class="right">
+        </div>
+    </div>
+    <!-- 顶部 END -->
+    <div class="content">
+        <!-- <img src="./src/img/pay_success.png" alt=""> -->
+        <!-- <img src="./src/img/pay_error.png" alt=""> -->
+    </div>
+
+    
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="./src/js/global.js"></script>
+    <script>
+        let status = getParam('status');
+        if(status == 'success') {
+            $('.content').html('<img src="./src/img/pay_success.png" alt="">')
+        }
+        switch(status) {
+            case 'success':
+                $('.content').html('<img src="./src/img/pay_success.png" alt="">');
+                $('.title').text('支付成功');
+                break;
+            case 'fail':
+                $('.content').html('<img src="./src/img/pay_error.png" alt="">');
+                $('.title').text('支付失败');
+                break;
+            default:
+                console.log('传参出错了！');
+                break;
+        }
+    
+
+        $('.back2').click(function () {
+            window.history.go(-5)
+        })
+    </script>
+</body>
+</html>

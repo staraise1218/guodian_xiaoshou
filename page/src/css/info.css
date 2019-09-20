@@ -1,0 +1,162 @@
+body {
+    padding-bottom: 2rem;
+    /* padding-top: .8rem; */
+}
+.topBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: .8rem;
+    /* border-bottom: .2rem solid #eee; */
+    background: transparent !important;
+    z-index: 1;
+}
+.topBar img {
+    position: absolute;
+    left: .1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.topBar p {
+    width: 100%;
+    text-align: center;
+    line-height: .8rem;
+}
+.topBar .right {
+    position: absolute;
+    right: .3rem
+}
+
+
+._top {
+    background: linear-gradient(rgb(253, 221, 183), rgb(210, 172, 125));
+    font-size: 12px;
+    padding: 5em 1em 3em 1em;
+}
+._top p {
+    line-height: 1.5em;
+}
+._top p:last-child {
+    color: #fff;
+    opacity: .8;
+}
+
+.list_wrap .list_item {
+    display: flex;
+    align-items: center;
+    margin: 0 .2rem;
+    justify-content: space-between;
+    font-size: .26rem;
+    padding: .3rem 0;
+    border-bottom: 1px solid #eee;
+}
+.list_wrap .list_item .r {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.list_wrap .list_item .r i {
+    display: block;
+    width: .3rem;
+    height: .3rem;
+    background-image: url('../img/icon/right2.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-left: .1rem;
+}
+
+
+
+
+.bg {
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.name_save {
+    /* height: 230px; */
+}
+.save {
+    width: 100%;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+.save .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+}
+.save .title img {
+    width: 20px;
+}
+.save .title .l p {
+    font-size: 16px;
+    font-weight: bold;
+}
+.save .inp {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+.save .inp input {
+    background: rgba(240, 240, 240,1);
+    border: none;
+    width: 75%;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: none;
+}
+.save .inp p {
+    width: 75%;
+    font-size: 12px;
+    opacity: .6;
+    padding: 10px 0;
+    box-sizing: border-box;
+}
+.save .sub {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.save .sub button {
+    width: 75%;
+    padding: 12px;
+    border-radius: 4px;
+    border: none;
+    background: #ccc;
+    color: #FFF;
+    margin: 20px 0;
+    outline: none;
+}
+
+.save_sex {
+    text-align: center; 
+}
+.save_sex .item {
+    padding: 12px;
+    box-sizing: border-box;
+    background: #f3f3f3;
+}
+.save_sex .item:first-child {
+    border-bottom: 1px solid #ddd;
+}
+.save_sex .item:last-child {
+    background: #fff;
+    color: #bbb;
+}
+
+.save button.active {
+    background: #222;
+}

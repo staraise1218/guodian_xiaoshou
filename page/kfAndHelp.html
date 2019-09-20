@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./src/js/rem.js"></script>
+    <link rel="stylesheet" href="./src/css/global.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            padding-top: 50px;
+        }
+
+        .topBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: .8rem;
+            background: #fff;
+            z-index: 1;
+            border-bottom: .01rem solid #F5F5F5;
+        }
+
+        .topBar img {
+            position: absolute;
+            left: .1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .topBar p {
+            width: 100%;
+            text-align: center;
+            line-height: .8rem;
+        }
+
+        .topBar .right {
+            position: absolute;
+            right: .2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: .24rem;
+        }
+
+        .topBar .right p {
+            font-size: .25rem
+        }
+        .list {
+            display: flex;
+            flex-direction: column;
+        }
+        .list li {
+            display: flex;
+            align-items: center;
+            padding: .2rem;
+            border-bottom: 1px solid #eee;
+        }
+        .list li img {
+            width: 1rem;
+        }
+        .list li .l {
+            font-size: 0;
+        }
+        .list li .r {
+            display: flex;
+            align-items: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- 顶部 -->
+    <div class="topBar">
+        <img src="./src/img/icon/back.png" alt="" class="icon-df back">
+        <p class="text-df title">客服与帮助</p>
+    </div>
+    <!-- 顶部 END -->
+
+    <ul class="list">
+        <li onclick="ysf('open')">
+            <div class="l">
+                <img src="./src/img/icon/客服.png" alt="">
+            </div>
+            <div class="r">
+                <p>在线客服</p>
+                <p>（09:00-18:00）</p>
+            </div>
+        </li>
+        <li>
+            <div class="l">
+                <img src="./src/img/icon/电话.png" alt="">
+            </div>
+            <div class="r">
+                <p>客服热线</p>
+                <p>（010-80456828 转 86）</p>
+            </div>
+        </li>
+    </ul>
+
+
+
+
+
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="./src/js/global.js"></script>
+    <script>
+    
+    </script>
+<!-- 网易七鱼 开始 -->
+    <script>
+        (function (w, d, n, a, j) {
+            w[n] = w[n] || function () {
+                (w[n].a = w[n].a || []).push(arguments);
+            };
+            j = d.createElement('script');
+            j.async = true;
+            j.src ='https://qiyukf.com/script/f7d7bda2488a94a7103e779cf1aa436c.js';
+            d.body.appendChild(j);
+        })(window, document, 'ysf');
+            
+        // var isSdkReady = true;
+     //    ysf('onLayerload', function () {
+     //        isSdkReady = true;
+     //    })
+
+     //    window.openSdk = function () {
+     //        if (isSdkReady) {
+     //            ysf('open');
+     //        } else {
+     //            alert('sdk尚未加载成功，请稍后再试');
+     //        }
+     //    }
+
+        let myUsetInfo = localStorage.getItem('USERINFO');
+        myUsetInfo = JSON.parse(myUsetInfo);
+
+        ysf('config', {
+            uid: myUsetInfo.user_id,
+            name:myUsetInfo.nickname,
+            email:myUsetInfo.email,
+            mobile:myUsetInfo.mobile,
+        });
+
+    </script>
+<style type="text/css">
+    #YSF-BTN-HOLDER { right: -10000000px; }
+</style>
+<!-- 网易七鱼 结束 -->
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!-- 隐私权政策 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="content"></div>
+
+    
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="./src/js/global.js"></script>
+    <script>
+        /**
+         * @type 1 探索国典; 2 鉴定机制； 3 消费者告知书; 4 经营信息； 5 隐私权策略
+        */
+        let type = getParam('type')
+        $.ajax({
+            type: 'post',
+            url: GlobalHost + '/Api/article/getContent',
+            data: {
+                type: type
+            },
+            success: function (res) {
+                console.log(res)
+                if(res.code == 200) {
+                    $('.content').html(res.data.content)
+                    $('title').text(res.data.title)
+                }
+            }
+        })
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

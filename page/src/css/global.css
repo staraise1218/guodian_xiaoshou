@@ -1,0 +1,329 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+em {
+    font-style: normal
+}
+b {
+    font-size: .28rem;
+}
+
+
+/* ==========================
+    tag btn 部分
+==============================*/
+.tag-df {
+    color: #fff;
+    background: #EB3A34;
+    padding: .01rem .1rem;
+    border-radius: .2rem
+}
+
+
+/* ==========================
+    layout 部分
+==============================*/
+.text-center {
+    text-align: center;
+}
+.f-x-c {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+
+
+
+/* ==========================
+    icon 部分
+==============================*/
+.icon-sm {
+    width: .22rem;
+}
+.icon-xs {
+    width: .3rem;
+}
+.icon-df {
+    width: .4rem;
+}
+.icon-lg {
+    width: .46rem;
+}
+.icon-xl {
+    width: .52rem;
+}
+.icon-xxl {
+    width: .56rem;
+}
+.icon-sl {
+    width: .62rem;
+}
+.icon-xsl {
+    width: .68rem;
+}
+.icon-best {
+    width: .8rem;
+}
+
+
+
+
+
+
+/* ==========================
+    bg 部分
+==============================*/
+.bg-df {
+    background: #fff;
+}
+
+
+
+
+/* ==========================
+    文本 部分
+==============================*/
+.text-xs {
+    font-size: .2rem;
+}
+.text-sm {
+    font-size: .24rem;
+}
+.text-df {
+    font-size: .28rem;
+}
+.text-lg {
+    font-size: .32rem;
+}
+.text-xl {
+    font-size: .36rem;
+}
+.text-xxl {
+    font-size: .44rem;
+}
+.text-sl {
+    font-size: .8em;
+}
+.text-xsl {
+    font-size: 1.2rem;
+}
+
+
+/* ==========================
+    option 部分
+==============================*/
+.op-10 {
+    color: rgba(0,0,0,.1);
+}
+.op-8 {
+    color: rgba(0,0,0,.8);
+}
+.op-6 {
+    color: rgba(0,0,0,.6);
+}
+.op-4 {
+    color: rgba(0,0,0,.4);
+}
+.op-2 {
+    color: rgba(0,0,0,.2);
+}
+.op-1 {
+    color: rgba(0,0,0,.1);
+}
+
+
+
+
+
+
+/* ==========================
+    color 部分
+==============================*/
+.c-df {
+    color: #222;
+}
+.c-m {
+    color: #E0B15B;
+}
+.c-w {
+    color: #fff;
+}
+.c-warn {
+    color: #EB3A33;
+}
+
+
+
+
+/* ==========================
+    margin 部分
+==============================*/
+.m-l {
+    margin-left: .1rem;
+}
+.ml-df {
+    margin-left: .1rem;
+}
+.mr-df {
+    margin-right: .1rem;
+}
+
+
+
+.md {
+    margin-bottom: .2rem;
+}
+
+
+/* ==========================
+    padding 部分
+==============================*/
+.pd-df {
+    padding: .2rem .3rem;
+    box-sizing: border-box;
+}
+.pd-xs {
+    padding: .2rem;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+/* ==========================
+    border 部分
+==============================*/
+.bd-b {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.bd-df {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+
+
+
+
+
+
+
+
+/* ==========================
+    font-weight 部分
+==============================*/
+.w-df {
+    font-weight: 400;
+}
+.w-xs {
+    font-weight: 200;
+}
+.w-lg {
+    font-weight: 600;
+}
+.w-max {
+    font-weight: 900;
+}
+
+
+/* ==========================
+    line-height 部分
+==============================*/
+.h-xs {
+    line-height: 1.5em;
+}
+.h-df {
+    line-height: 2em;
+}
+
+
+
+
+
+
+/* ==========================
+    其他 部分
+==============================*/
+.line {
+    background: #F7F7F7;
+    height: .14rem;
+}
+
+
+
+
+
+
+.more-df {
+    position: relative;
+}
+.more-df::before {
+    display: block;
+    content: '';
+    width: .4rem;
+    height: .4rem;
+    position: absolute;
+    right: .1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url('../img/icon/right2.png');
+    background-size: contain
+}
+.more-xs {
+    position: relative;
+}
+.more-xs::before {
+    display: block;
+    content: '';
+    width: .3rem;
+    height: .3rem;
+    position: absolute;
+    right: .1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url('../img/icon/right2.png');
+    background-size: contain
+}
+
+
+.recommend .poster {
+    position: relative;
+    width: 100%;
+}
+.recommend .poster img {
+    width: 100%;
+}
+.recommend .poster .yd {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    left: 0;
+    top: 0;
+}
+.recommend .poster .sq {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    right: 0;
+    bottom: 0;
+}
+
+
+

@@ -1,0 +1,259 @@
+body {
+    padding-top: .8rem;
+    background: #F5F5F5;
+    box-sizing: border-box;
+    padding-bottom: 2rem;
+}
+.topBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: .8rem;
+    background: #fff;
+    z-index: 1;
+}
+.topBar img {
+    position: absolute;
+    left: .1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.topBar p {
+    width: 100%;
+    text-align: center;
+    line-height: .8rem;
+}
+.topBar .right {
+    position: absolute;
+    right: .2rem;
+    top: 50%;
+    transform: translateY(-50%)
+}
+.topBar .right p {
+    font-size: .25rem
+}
+
+
+
+
+.addres-content {
+    margin: .3rem;
+    background: #fff;
+    border-radius: .1rem;
+}
+
+
+
+
+
+
+
+
+.submit-wrap {
+    padding: .2rem;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+.submit-wrap .submit {
+    background: #eee;
+    color: #222;
+    text-align: center;
+    font-size: .28rem;
+    padding: .2rem 0;
+    box-sizing: border-box;
+}
+.submit.active {
+    background: #222;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+.alert-box,
+.alert-box-del {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background: rgba(0,0,0,.5);
+    left: 0;
+    top: 0;
+    z-index: 99;
+}
+
+.alert-address {
+    background: #fff;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+.alert-address .tips-top {
+    position: relative;
+    padding: 0 .2rem;
+    height: 40px;
+}
+.alert-address .tips-top img {
+    position: absolute;
+    left: .2rem;
+    top: 50%;
+    transform: translateY(-50%)
+}
+.alert-address .tips-top i {
+    position: absolute;
+    right: .2rem;
+    top: 50%;
+    transform: translateY(-50%)
+}
+.alert-address .tips-top p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: .2rem;
+    text-align: center;
+    width: 100%;
+    z-index: 0;
+}
+.alert-address .tips-top i {
+    font-style: normal;
+}
+.alert-address .tips-top .close {
+    z-index: 999;
+}
+.alert-address .choose {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    display: flex;
+    align-items: center;
+}
+.alert-address .choose {
+    position: relative;
+    height: .8rem;
+}
+.alert-address .choose li {
+    position: absolute;
+    top: .2rem;
+}
+.alert-address .choose li:nth-child(1) {
+    left: .3rem;
+}
+.alert-address .choose li:nth-child(2) {
+    left: 2.5rem;
+}
+.alert-address .choose li:nth-child(3) {
+    left: 4.8rem;
+}
+.alert-address .content {
+    padding: .0 .3rem;
+    display: flex;
+    position: relative;
+    height: 6rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+.loading {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 100px;
+}
+.alert-address .choose .active {
+    
+}
+.alert-address .choose .active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 2px;
+    background: #222;
+    position: absolute;
+    bottom: -.24rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.alert-address .content ul {
+    height: 6rem;
+    position: absolute;
+    top: 0;
+    overflow-y: scroll;
+    width: 2rem;
+}
+.alert-address .content ul:nth-child(1) {
+    left: .3rem;
+}
+.alert-address .content ul:nth-child(2) {
+    left: 2.5rem;
+}
+.alert-address .content ul:nth-child(3) {
+    left: 4.8rem;
+}
+.alert-address .content ul li {
+    padding: .1rem .0rem;
+}
+
+.alert-address .content ul .active {
+    position: relative;
+}
+.alert-address .content ul .active::after {
+    content: '';
+    display: block;
+    width: .35rem;
+    height: .35rem;
+    position: absolute;
+    right: .2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url('../img/icon/对号.png');
+    background-size: contain;
+}
+
+
+
+
+
+.alert-del {
+    width: 60%;
+    background: #fff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    border-radius: .1rem;
+    overflow: hidden;
+}
+.alert-del p {
+    padding: .3rem;
+}
+.alert-del .ctr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: .2rem;
+}
+.alert-del .ctr span {
+    display: inline-block;
+    text-align: center;
+    flex: 1;
+    padding: .2rem;
+}
+.alert-del .ctr span:first-child {
+    background: #eee;
+}
+.alert-del .ctr span:last-child {
+    background: #EB3A33;
+    color: #ffdf;
+}

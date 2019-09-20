@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>最新消息</title>
+    <script src="./src/js/rem.js"></script>
+    <link rel="stylesheet" href="./src/css/public.css">
+    <link rel="stylesheet" href="./src/css/global.css">
+    <style>
+        body {
+            padding-bottom: 2rem;
+            padding-top: .8rem;
+            box-sizing: border-box;
+        }
+        .topBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: .8rem;
+            border-bottom: 1px solid #eee;
+            background: #fff;
+            z-index: 1;
+        }
+        .topBar img {
+            position: absolute;
+            left: .1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .topBar p {
+            width: 100%;
+            text-align: center;
+            line-height: .8rem;
+        }
+
+        .topBar .right {
+            position: absolute;
+            right: .3rem
+        }
+        .list_wrap .list_item {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            margin: .2rem;
+            margin-bottom: 0;
+            padding-bottom: .2rem;
+        }
+        .list_wrap .list_item img {
+            width: 40px;
+            height: 40px;
+            margin-right: .2rem;
+        }
+        .list_wrap .list_item .l {
+            display: flex;
+            width: 100%;
+        }
+        .list_wrap .list_item .t > p:first-child {
+            font-size: 16px;
+        }
+        .list_wrap .list_item .r {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .list_wrap .list_item .r > p:last-child {
+            font-size: 10px;
+        }
+        .list_wrap .list_item .t {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 顶部 -->
+    <div class="topBar">
+        <img src="./src/img/icon/back.png" alt="" class="icon-df back">
+        <p class="text-df">消息中心</p>
+        <div class="right">
+            <!-- <img class="icon-df" src="./src/img/icon/share.png" alt=""> -->
+            <!-- <img class="icon-df m-l" src="./src/img/icon/message.png" alt=""> -->
+        </div>
+    </div>
+    <!-- 顶部 END -->
+
+    <ul class="list_wrap">
+        <li class="list_item" onclick="ysf('open')">
+            <div class="l">
+                <img src="./src/img/icon/客服.png" alt="">
+                <div class="r">
+                    <div class="t">
+                        <p>在线客服</p>
+                    </div>
+                    <p>查看聊天记录</p>
+                </div>
+            </div>
+        </li>
+        <!-- <li class="list_item">
+            <div class="l">
+                <img src="./src/img/icon/hei.png" alt="">
+                <div class="r">
+                    <div class="t">
+                        <p>物流助手</p>
+                    </div>
+                    <p>查看订单记录</p>
+                </div>
+            </div>
+        </li> -->
+        <li class="list_item" onclick="window.location.href='news.html'">
+            <div class="l">
+                <img src="./src/img/icon/消息.png" alt="">
+                <div class="r">
+                    <div class="t">
+                        <p>最新消息</p>
+                        <!-- <p>2019.03.18</p> -->
+                    </div>
+                    <p>国典推送信息</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+
+
+
+
+
+
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/store.js/1.3.20/store.min.js"></script>
+    <script src="./src/js/global.js"></script>
+<!-- 网易七鱼 开始 -->
+    <script>
+        (function (w, d, n, a, j) {
+            w[n] = w[n] || function () {
+                (w[n].a = w[n].a || []).push(arguments);
+            };
+            j = d.createElement('script');
+            j.async = true;
+            j.src ='https://qiyukf.com/script/f7d7bda2488a94a7103e779cf1aa436c.js';
+            d.body.appendChild(j);
+        })(window, document, 'ysf');
+            
+        // var isSdkReady = true;
+     //    ysf('onLayerload', function () {
+     //        isSdkReady = true;
+     //    })
+
+     //    window.openSdk = function () {
+     //        if (isSdkReady) {
+     //            ysf('open');
+     //        } else {
+     //            alert('sdk尚未加载成功，请稍后再试');
+     //        }
+     //    }
+
+        let myUsetInfo = localStorage.getItem('USERINFO');
+        myUsetInfo = JSON.parse(myUsetInfo);
+
+        ysf('config', {
+            uid: myUsetInfo.user_id,
+            name:myUsetInfo.nickname,
+            email:myUsetInfo.email,
+            mobile:myUsetInfo.mobile,
+        });
+
+    </script>
+<style type="text/css">
+    #YSF-BTN-HOLDER { right: -10000000px; }
+</style>
+<!-- 网易七鱼 结束 -->
+</body>
+</html>

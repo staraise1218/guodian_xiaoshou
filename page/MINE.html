@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试页面</title>
+    <style lang="">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            display: block;
+            color: #222;
+            text-decoration: none;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="el"></div>
+
+
+
+
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/store.js/1.3.20/store.min.js"></script>
+    <script>
+        page = [
+            {
+                name: '传参页面',
+                link: './empty.html?user_id=337'
+            },
+            {
+                name: '全部订单',
+                link: './myOrder.html?type=ALL'
+            },
+            {
+                name: '待付款',
+                link: './myOrder.html?type=WAITPAY'
+            },
+            {
+                name: '待收货',
+                link: './myOrder.html?type=WAITRECEIVE'
+            },
+            {
+                name: '已完成',
+                link: './myOrder.html?type=FINISH'
+            },
+            {
+                name: '已取消',
+                link: './myOrder.html?type=CANCEL'
+            },
+            {
+                name: '退货单',
+                link: './myOrder.html?type=暂无页面'
+            },
+            
+            
+            
+            
+            {
+                name: '商品详情',
+                link: './commodity.html?goods_id=681'
+            },
+            
+            
+            
+            
+            
+            {
+                name: '我的收藏',
+                link: ''
+            },{
+                name: '我的浏览',
+                link: ''
+            },{
+                name: '会员中心',
+                link: ''
+            },{
+                name: '优惠券',
+                link: ''
+            },{
+                name: '我的积分',
+                link: ''
+            },{
+                name: '我的闲置',
+                link: ''
+            },{
+                name: '消费者告知书',
+                link: ''
+            },{
+                name: '我的养护',
+                link: ''
+            },{
+                name: '客服与帮助',
+                link: ''
+            },{
+                name: '经营信息',
+                link: ''
+            },{
+                name: '隐私与政策',
+                link: ''
+            },
+
+
+            {
+                name: '选择地址',
+                link: './addressChoose.html'
+            },
+            {
+                name: '选择管理列表',
+                link: './addressList.html'
+            },
+
+            {
+                name: '购物袋',
+                link: './shoppingBag.html?user_id=2'
+            },
+            {
+                name: '编辑地址-添加地址',
+                link: './addressEdit.html'
+            },
+
+
+            {
+                name: '升级页面',
+                link: './orderWait.html'
+            },
+            
+            {
+                name: '结算中心',
+                link: './orderSuccess.html'
+            },
+            
+            {
+                name: '退货单',
+                link: './orderReturn.html'
+            },
+            
+            {
+                name: '消息中心',
+                link: './message.html'
+            },
+            
+            
+
+
+        ]
+        let str = '';
+        page.forEach(item => {
+            console.log(item)
+            str += `<a href="${item.link}">${item.name}</a>`
+        });
+        $('#el').html(`<ul>` + str + `</ul>`)
+
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+users 表
+IDCard, address, like_goods, like_brand, mark, sale_id, buy_intention
+
+新增表
+tp_store 店铺表
+tp_store_admin 店铺销售关联表
+
+admin
+realname, phone, ID_number, department, entry_date
+
+order 表
+admin_id
+
+新增表 tp_storehouse 仓库表
+
+tp_goods 表
+is_on_sale 默认改为0
+增加字段 storehouse_id 仓库id
+
+新增 tp_goods_log 
+
+新增 tp_goods_storehouse_log
+
+修改system_menu 表内容
+

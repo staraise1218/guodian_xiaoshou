@@ -1,0 +1,94 @@
+body {
+    padding-top: 1rem;
+    background: #F5F5F5;
+    box-sizing: border-box;
+    padding-bottom: 2rem;
+}
+.topBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: .8rem;
+    background: #fff;
+    z-index: 1;
+    border-bottom: .2rem solid #F5F5F5;
+}
+.topBar img {
+    position: absolute;
+    left: .1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.topBar p {
+    width: 100%;
+    text-align: center;
+    line-height: .8rem;
+}
+.topBar .right {
+    position: absolute;
+    right: .2rem;
+    top: 50%;
+    transform: translateY(-50%)
+}
+.topBar .right p {
+    font-size: .25rem
+}
+
+
+
+
+
+.shop-list-wrap {
+    background: #fff;
+    padding: .2rem .3rem;
+}
+.shop-list-wrap .shop-item {
+    max-width: 1.4rem;
+    margin-right: .2rem;
+    max-height: 1.4rem;
+    vertical-align: middle;
+}
+
+
+
+
+
+
+.choose-wrap .btn-wrap {
+    padding: .2rem 0;
+    padding-top: .3rem;
+}
+.choose-wrap .btn-wrap .btn {
+    border: 1px solid rgba(0,0,0,.2);
+    color: rgba(0,0,0,.4);
+    border-radius: 1rem;
+    padding: .08rem .2rem;
+    margin-right: 1rem;
+}
+.choose-wrap .btn-wrap .btn.active {
+    border: 1px solid rgba(0,0,0,.5);
+    color: rgba(0,0,0,.5);
+}
+
+
+
+.peisong-con {
+    height: 2rem;
+}
+.ziti-con .bt-tips {
+    padding-top: 1rem;
+}
+
+
+
+.submit {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    line-height: 2.5em;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}

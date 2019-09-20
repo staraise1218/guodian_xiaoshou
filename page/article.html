@@ -1,0 +1,276 @@
+<!-- 文章页 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <script src="./src/js/rem.js"></script>
+    <link rel="stylesheet" href="./src/css/global.css">
+    <style>
+        body {
+            padding-bottom: 2rem;
+            padding-top: 1rem;
+        }
+        .topBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: .8rem;
+            background: #fff;
+            z-index: 1;
+        }
+        .topBar img {
+            position: absolute;
+            left: .1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .topBar p {
+            width: 100%;
+            text-align: center;
+            line-height: .8rem;
+        }
+        .topBar .right {
+            position: absolute;
+            right: .4rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+        }
+        .content {
+            padding: .2rem;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        
+        /* share */
+        .share_bg {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 900;
+            background: rgba(0, 0, 0, .5);
+            width: 100%;
+            height: 100vh;
+        }
+        .share-wrap {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 991;
+            width: 100%;
+            background: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .share-wrap p {
+            border-bottom: 1px solid rgba(0, 0, 0, .2);
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        .share-wrap ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px 0 20px;
+        }
+        .share-wrap ul li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+        .share-wrap ul li img {
+            height: 30px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶部 -->
+    <div class="topBar">
+        <img src="./src/img/icon/back.png" alt="" class="icon-df back">
+        <p class="text-df ttt"></p>
+        <div class="right share-show">
+            <img class="icon-df" src="./src/img/icon/share.png" alt="">
+            <!-- <img class="icon-df m-l back" src="./src/img/icon/message.png" alt=""> -->
+        </div>
+    </div>
+    <!-- 顶部 END -->
+    <div class="content"></div>
+
+    <!-- share -->
+    <div class="share_bg" style="display: none"></div>
+    <div class="share-wrap" style="display: none">
+        <p class="share-title">分享到</p>
+        <ul>
+            <li data-type="0">
+                <img src="./src/img/icon/形状.png" alt="">
+                <span>微博</span>
+            </li>
+            <li data-type="1">
+                <img src="./src/img/icon/wx.png" alt="">
+                <span>微信</span>
+            </li>
+            <li data-type="2">
+                <img src="./src/img/icon/qq.png" alt="">
+                <span>QQ</span>
+            </li>
+        </ul>
+    </div>
+
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="./src/js/global.js"></script>
+    <script>
+        let myUsetInfo = localStorage.getItem('USERINFO');
+        myUsetInfo = JSON.parse(myUsetInfo);
+        console.log(myUsetInfo)
+        const type = getParam('type');
+
+        // 分享
+        let shareName = '';
+
+
+
+        switch(type) {
+            case '6':
+                $('.content').css('padding','0');
+                break;
+            case '7':
+                $('.content').css('padding','0');
+                break;
+        }
+            $.ajax({
+                type: 'POST',
+                url: GlobalHost + '/Api/article/getContent',
+                data: {
+                    type: type
+                },
+                success: function (res) {
+                    console.log(res)
+                    shareName = res.data.title;
+                    var reg = /\/public/ig
+                    res.data.content = res.data.content.replace(reg, GlobalHost + '/public')
+                    $('.content').html(res.data.content)
+                    $('.ttt').text(res.data.title);
+                }
+            })
+        
+/**
+ * 分享
+ */
+$('.share-show').click(function () {
+    $('.share_bg').show();
+    $('.share-wrap').slideDown('fast')
+})
+// 关闭分享
+$('.share_bg').click(function () {
+    $('.share_bg').hide();
+    $('.share-wrap').slideUp('fast')
+})
+
+// 分享
+$('.share-wrap li').on('click', function () {
+    console.log($(this).attr('data-type'))
+    console.log($(this).attr('data-type'))
+    console.log('shareName',shareName)
+    console.log($('img').eq(2).attr('src'))
+    // alert($(this).attr('data-type'))
+    // alert(shareName)
+    // alert(GlobalHost + goods_images_list[0].image_url)
+    switch($(this).attr('data-type')) {
+        case '0': // 微博
+            console.log('分享到微博')
+            // alert('微博')
+            window.android.showShare(shareName, window.location.href, "", $('img').eq(2).attr('src'), "webo");
+            break;
+        case '1': // 微信
+            console.log('分享到微信')
+            // alert('微信')
+            window.android.showShare(shareName, window.location.href, "", $('img').eq(2).attr('src'), "wx");
+            break;
+        case '2': // QQ
+            // console.log('分享到QQ')
+            alert('QQ')
+            window.android.showShare(shareName, window.location.href, "", $('img').eq(2).attr('src'), "qq");
+            break;
+        default:
+            // alert('分享错误')
+            console.log('分享错误');
+            break;
+    }
+})
+
+    </script>
+
+<div class="big_img">
+  <div class="swiper-container2">
+    <div class="swiper-wrapper"> </div>
+  </div>
+</div>
+<link rel="stylesheet"  href="../public/plugins/swiper/swiper.min.css"/>
+<style type="text/css">
+    .big_img{position: fixed;z-index: -1;opacity: 0;background: rgba(0,0,0,0.9);width: 100%;height: 100%;top:0;left:0;}
+    .big_img .swiper-container2 {position: relative;width: 100%;height: 100%;}
+    .big_img .swiper-container2  .swiper-wrapper{width: 100%;height: 100%;}
+    .big_img .swiper-slide{width: 100%;height: 100%;display: table}
+    .big_img .swiper-slide .cell{width: 100%;;height: 100%;display: table-cell;vertical-align: middle;text-align: center;}
+    .big_img .swiper-slide img{max-width: 90%;max-height: 80%;margin:0 auto;}
+    .big_img .swiper-pagination2{position: absolute; top:0.2rem;text-align: center;width: 100%;}
+    .big_img .swiper-pagination2 span{margin:0 0.05rem;}
+</style>
+<script type="text/javascript" src="./src/js/jquery.min.js"></script>
+<script type="text/javascript" src="../public/plugins/swiper/swiper.min.js"></script>
+<script>
+$(document).ready(function(){
+  /*调起大图 S*/
+   var mySwiper = new Swiper('.swiper-container2', {
+        loop: false,
+        pagination: '.swiper-pagination2',
+        })
+    $(".content").on("click", ".jdzs img", function() {
+
+        var imgBox = $(this).parents(".jdzs").find("img");
+        var i = $(imgBox).index(this);
+        $(".big_img .swiper-wrapper").html("")
+
+        for(var j = 0 ,c = imgBox.length; j < c ;j++){
+         $(".big_img .swiper-wrapper").append('<div class="swiper-slide"><div class="cell"><img src="' + imgBox.eq(j).attr("src") + '" / ></div></div>');
+        }
+        mySwiper.updateSlidesSize();
+        mySwiper.updatePagination();
+        $(".big_img").css({
+            "z-index": 1001,
+            "opacity": "1"
+        });
+        mySwiper.slideTo(i, 0, false);
+        return false;
+    });
+  
+    $(".big_img").on("click", 
+    function() {
+        $(this).css({
+            "z-index": "-1",
+            "opacity": "0"
+        });
+
+    });
+  });
+  /*调起大图 E*/
+
+
+</script>
+
+</body>
+
+</html>

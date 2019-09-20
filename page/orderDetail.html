@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单详情</title>
+    <script src="./src/js/rem.js"></script>
+    <link rel="stylesheet" href="./src/css/global.css">
+    <link rel="stylesheet" href="./src/css/orderDetail.css">
+</head>
+
+<body>
+    <!-- 顶部 -->
+    <div class="topBar">
+        <img src="./src/img/icon/back.png" alt="" class="icon-df back">
+        <p class="text-df">订单详情</p>
+        <div class="right">
+            <!-- <img class="icon-df" src="./src/img/icon/share.png" alt=""> -->
+            <!-- <img class="icon-df m-l" src="./src/img/icon/message.png" alt=""> -->
+            <p onclick="ysf('open')">在线客服</p>
+        </div>
+    </div>
+    <!-- 顶部 END -->
+
+    <!-- 金色提示  -->
+    <div class="tips">
+        <!-- 待付款 -->
+        <!-- <div class="writpay">
+            <div class="title">
+                <p>待付款</p>
+                <p class="price">￥123456</p>
+            </div>
+            <div class="title">
+                <p>剩余12341y94832</p>
+                <p class="price">应付金额</p>
+            </div>
+        </div> -->
+
+        <!-- TODO: 缺少待发货 -->
+        <!-- 待收货 -->
+        <!-- <div class="waitreceive">
+            <div class="left">
+                <p class="text-lg">卖家已发货</p>
+                <p>还剩</p>
+            </div>
+            <div class="right">
+                <img src="./src/img/icon/daishouhuo.png" alt="">
+            </div>
+        </div> -->
+
+        <!-- 待评价  交易成功 -->
+        <!-- <div class="waitccomment">
+            <p>交易成功</p>
+            <img src="./src/img/icon/daishouhuo.png" alt="">
+        </div> -->
+
+        <!-- 已取消 -->
+        <!-- <div class="CANCEL">
+            <p>已取消</p>
+        </div> -->
+    </div>
+
+    <!-- 订单跟踪 -->
+    <div class="order-track">
+        <div class="order-title more text-df md">
+            <!-- 待付款 -->
+            <!-- <div class="writpay">
+                <p class="w-1">订单跟踪</p>
+                <p class="w-1 text-xs">您的订单已提交，等待系统确认</p>
+                <p class="text-xs op-4">2019</p>
+            </div> -->
+            <!-- 待收货 -->
+            <!-- <div class="waitreceive">
+                <p class="w-1">运输中</p>
+                <p class="w-1 text-xs">顺丰快递单号：123</p>
+            </div> -->
+            <!-- 待评价 -->
+            <!-- <div class="waitccomment">
+                <p class="w-1">已签收</p>
+                <p class="w-1 text-xs">顺丰快递：123</p>
+            </div> -->
+            <!-- 已取消 不显示 -->
+        </div>
+    </div>
+
+    <!-- 配送方式 -->
+    <div class="buy_method order-title  text-df  bd-b">
+        <p class="w-1">配送方式</p>
+        <p class="con text-xs"></p>
+    </div>
+
+    <!-- 收货地址 -->
+    <div class="address-con order-title  text-df  bd-b">
+        <p class="w-1">收货地址</p>
+        <p class="consignee text-xs">收货人 手机号</p>
+        <p class="fulladdress text-xs">详细地址</p>
+    </div>
+
+    <!-- 身份证信息 -->
+    <div class="ID_number order-title  text-df  md">
+        <p class="w-1">身份证信息</p>
+        <p class="text-xs con"></p>
+    </div>
+
+
+
+    <div class="shop-content text-df">
+        <!-- TODO: 商品件数待确定 -->
+        <p class="shop_count pd-df title w-1 bd-b">共【正在计算】件商品</p>
+        <ul class="content-list">
+            <!-- <li class="list-item pd-df bd-df">
+                <div class="poster">
+                    <img src="./src/img/1.png" alt="">
+                </div>
+                <div class="info">
+                    <p>标题</p>
+                    <p class="op-6">标题</p>
+                    <p class="op-6">标题</p>
+                    <p class="op-6">标题</p>
+                    <div class="tag-wrap op-4">
+                        <div class="left">
+                            <span class="tag">标签</span>
+                        </div>
+                        <p class="count">x1</p>
+                    </div>
+                    <p class="price">￥8237</p>
+                </div>
+            </li> -->
+        </ul>
+        <div class="money pd-df bd-df w-lg">
+            <p class="text-lg">应付金额</p>
+            <p class="price total_amount">￥</p>
+        </div>
+        <div class="order-info pd-df bd-df text-df">
+            <!-- TODO: 复制功能还没做，兼容有问题 -->
+            <p class="order_sn h-df"> <span id="copy-con">订单编号：【】</span><span id="copy" class="fuzhi">复制</span></p>
+            <p class="add_time h-df">下单时间：【】</p>
+        </div>
+    </div>
+
+
+
+    <!-- TODO: 没有评价页面 -->
+    <div class="ctr text-df">
+        <!-- <span class="cancelbtn">删除订单</span>
+        <span class="cancelbtn">查看物流</span>
+        <span class="cancelbtn">申请退款</span>
+        <span class="paybtn">确认收货</span>
+        <span class="paybtn">去付款</span> -->
+    </div>
+
+
+
+
+
+    <!-- alert 运输中 -->
+    <div class="alert-box" style="display: none"></div>
+    <!-- 弹窗 运输 -->
+    <div class="alert-yunshu text-df" style="display: none">
+        <div class="loading_">物流信息加载中...</div>
+        <!-- <div class="top">
+            <p>运输中</p>
+            <div class="yunshu-title">
+                <div class="left">
+                    <img src="./src/img/1.png" alt="">
+                </div>
+                <div class="right">
+                    <p>商品标题</p>
+                    <p>快递信息</p>
+                </div>
+            </div>
+        </div> -->
+        <!-- <ul class="list-wrap">
+            <li class="list">
+                <div class="date">
+                    <p class="time">12:12</p>
+                    <p class="day">12-12</p>
+                </div>
+                <div class="info">
+                    <img src="./src/img/icon/待收货/hei.png" alt="" class="info-icon">
+                    <div class="info-con">
+                        <p class="left">xxxxxxxx已揽收</p>
+                    </div>
+                </div>
+            </li>
+            <li class="list">
+                <div class="date">
+                    <p class="time">12:12</p>
+                    <p class="day">12-12</p>
+                </div>
+                <div class="info">
+                    <div class="info-con">
+                        <p class="left">xxxxxxxx已揽收</p>
+                    </div>
+                </div>
+            </li>
+            <li class="list">
+                <div class="date">
+                    <p class="time">12:12</p>
+                    <p class="day">12-12</p>
+                </div>
+                <div class="info">
+                    <img src="./src/img/icon/待收货/hei.png" alt="" class="info-icon">
+                    <div class="info-con">
+                        <p class="left">xxxxxxxx已揽收</p>
+                    </div>
+                </div>
+            </li>
+            <li class="list">
+                <div class="date">
+                    <p class="time">12:12</p>
+                    <p class="day">12-12</p>
+                </div>
+                <div class="info">
+                    <img src="./src/img/icon/待收货/hei.png" alt="" class="info-icon">
+                    <div class="info-con">
+                        <p class="left">xxxxxxxx已揽收</p>
+                        <p class="right">小王</p>
+                    </div>
+                </div>
+            </li>
+            <li class="list">
+                <div class="date">
+                    <p class="time">12:12</p>
+                    <p class="day">12-12</p>
+                </div>
+                <div class="info">
+                    <img src="./src/img/icon/待收货/hei.png" alt="" class="info-icon">
+                    <div class="info-con">
+                        <p class="left">xxxxxxxx已揽收</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="bottom-tips text-xs">
+            <img src="./src/img/icon/待收货/hei.png" alt=""> 
+            <p>本数据由<em>快递公司</em>提供</p>
+        </div>
+        <div class="close">
+            <img src="./src/img/icon/close.png" alt="">
+        </div> -->
+    </div>
+
+
+
+    <!-- 弹窗 退款 -->
+    <div class="alert-tuikuan text-df" style="display: none">
+        <div class="top">
+            <p>退款信息</p>
+            <div class="yunshu-title">
+                <!-- <div class="left">
+                    <img src="./src/img/1.png" alt="">
+                </div> -->
+                <div class="right">
+                    <p>商品标题</p>
+                    <p>快递信息</p>
+                </div>
+            </div>
+        </div>
+        <div class="tuikuan-tips bd-df">
+            <p>退款总金额</p>
+            <p>￥654</p>
+        </div>
+        <div class="tuikuan-tips">
+            <p>退回银行卡</p>
+            <p>￥654</p>
+        </div>
+        <ul class="tuikuan-jindu text-sm">
+            <li class="jindu-item">
+                <p>卖家退款</p>
+                <p>2019-5-28 13:37</p>
+            </li>
+            <li class="jindu-item">
+                <p>卖家退款</p>
+                <p>2019-5-28 13:37</p>
+            </li>
+            <li class="jindu-item">
+                <p>卖家退款</p>
+                <p>2019-5-28 13:37</p>
+            </li>
+        </ul>
+        <ul class="shop-list-wrap">
+            <li class="list-item pd-df">
+                <div class="poster shop-poster">
+                    <img src="./src/img/1.png" alt="" class="shop-poster-img">
+                </div>
+                <div class="info">
+                    <p>标题</p>
+                    <p class="op-6">标题</p>
+                    <p class="op-6">标题</p>
+                    <div class="tag-wrap op-4">
+                        <div class="left">
+                            <span class="tag">标签</span>
+                        </div>
+                    </div>
+                    <p class="price">￥8237</p>
+                </div>
+            </li>
+        </ul>
+        <p class="tuikuan-order">退款金额： ￥123</p>
+        <p class="tuikuan-order">退款金额： ￥123</p>
+        <p class="tuikuan-order">退款金额： ￥123</p>
+        <div class="btn-wrap">
+            <a href="tel:17696639660" class="btn">联系卖家</a>
+        </div>
+        <div class="close">
+            <img src="./src/img/icon/close.png" alt="">
+        </div>
+    </div>
+
+    <div class="loading">123123</div>
+
+
+
+    <!-- 退款弹窗 -->
+    <div class="tuikuan_bg" style="display: none">
+        <img src="./src/img/icon/close.png" alt="" class="close_tuikuan">
+    </div>
+    <div class="tuikuan" style="display: none">
+        <div class="top">
+            <p>退款信息</p>
+            <p>退款成功</p>
+            <p>2019-5-5</p>
+        </div>
+        <div class="tuik-content">
+            <div class="item">
+                <p>退款总金额</p>
+                <p>￥123123</p>
+            </div>
+            <div class="item">
+                <p>返回银行卡</p>
+                <p>￥123123</p>
+            </div>
+            <div class="jindu">
+                <div class="jd-item">
+                    <p>等待买家退款</p>
+                    <span>2019-03-20 04:39:21</span>
+                </div>
+                <div class="jd-item">
+                    <p>等待买家退款</p>
+                    <span>2019-03-20 04:39:21</span>
+                </div>
+            </div>
+            <p class="tk-title">退款信息</p>
+            <ul class="shop-list-wrap">
+                <li>
+                    <div class="left">
+                        <img src="./src/img/1.png" alt="">
+                    </div>
+                    <div class="right">
+                        <p class="t">商品标题</p>
+                        <p>asdfa</p>
+                        <p>asfjnak</p>
+                        <p>
+                            <span>tag</span>
+                            <span>tag</span>
+                        </p>
+                        <p class="price">￥123</p>
+                    </div>
+                </li>
+            </ul>
+            <div class="footer">
+                <p>退款金额：￥12389768</p>
+                <p>申请时间：2019</p>
+                <p>退款编号：12908379187239</p>
+            </div>
+            <div class="btn">
+                <a href="tel:0147-88469258">联系买家</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert-tips"></div>
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <script src="./src/js/global.js"></script>
+    <script src="./src/js/orderDetail.js"></script>
+
+
+    <!-- 网易七鱼 开始 -->
+    <script>
+        (function (w, d, n, a, j) {
+            w[n] = w[n] || function () {
+                (w[n].a = w[n].a || []).push(arguments);
+            };
+            j = d.createElement('script');
+            j.async = true;
+            j.src ='https://qiyukf.com/script/f7d7bda2488a94a7103e779cf1aa436c.js';
+            d.body.appendChild(j);
+        })(window, document, 'ysf');
+            
+        // var isSdkReady = true;
+     //    ysf('onLayerload', function () {
+     //        isSdkReady = true;
+     //    })
+
+     //    window.openSdk = function () {
+     //        if (isSdkReady) {
+     //            ysf('open');
+     //        } else {
+     //            alert('sdk尚未加载成功，请稍后再试');
+     //        }
+     //    }
+
+        let userInfo = localStorage.getItem('USERINFO');
+        userInfo = JSON.parse(userInfo);
+        
+        ysf('config', {
+            uid: userInfo.user_id,
+            name:userInfo.nickname,
+            email:userInfo.email,
+            mobile:userInfo.mobile,
+        });
+
+    </script>
+<style type="text/css">
+    #YSF-BTN-HOLDER { right: -10000000px; }
+</style>
+<!-- 网易七鱼 结束 -->
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>结算中心</title>
+    <script src="./src/js/rem.js"></script>
+    <link rel="stylesheet" href="./src/css/public.css">
+    <link rel="stylesheet" href="./src/css/global.css">
+    <link rel="stylesheet" href="./src/css/jieshuan.css">
+</head>
+<body>
+
+    <script>
+        // alert('结算测试')
+    </script>
+    <!-- 顶部 -->
+    <div class="topBar">
+        <img src="./src/img/icon/back.png" alt="" class="icon-df back">
+        <p class="text-df">结算中心</p>
+        <div class="right">
+            <!-- <img class="icon-df" src="./src/img/icon/share.png" alt=""> -->
+            <!-- <img class="icon-df m-l" src="./src/img/icon/message.png" alt=""> -->
+        </div>
+    </div>
+    <!-- 顶部 END -->
+    <div class="peison_method be-center border-bottom more">
+        <p class="w-lg">配送方式</p>
+        <p class="peisong-title">配送方式</p>
+    </div>
+
+    <!-- 自提人信息 -->
+    <div class="address" style="display: none">
+        <p class="text-df w-lg">自提人信息</p>
+        <div class="more">
+            <p id="username-userphone" class="text-df">姓名 手机号</p>
+        </div>
+    </div>
+
+    <!-- 收货人信息 -->
+    <div class="address2" style="display: none">
+        <p class="text-df w-lg">收货人信息</p>
+        <div class="more">
+            <p class="user-name-number text-df">姓名 手机号</p>
+            <p class="user-address-f text-df">地址</p>
+        </div>
+    </div>
+
+    <!-- 身份证号 -->
+    <div class="be-center more shenfen-btn">
+        <p class="w-lg">身份证号</p>
+        <p id="shenfenCardVal" class="color_3">添加收货人身份证以便确认</p>
+    </div>
+
+
+    <img src="./src/img/icon/line.png" alt="" class="line">
+
+    <!-- <div class="be-center border-bottom more"> TODO: 积分正常后打开注释
+        <p class="w-lg">优惠券</p>
+        <p class="chooseYH">加载中..</p>
+    </div> -->
+    <div class="be-center more">
+        <p class="w-lg">优惠券</p>
+        <p class="chooseYH">加载中..</p>
+    </div>
+    <!-- <div class="be-center-2 borde-line more2"> TODO: 积分暂时不做
+        <p class="w-lg">积分</p>
+        <p>无积分</p>
+    </div> -->
+
+    <div class="be-center border-bottom ">
+        <p class="w-lg">1件商品</p>
+    </div>
+    <ul class="goodsList-box">
+        <!-- <li class="shop-wrap border-bottom">
+            <div class="poster">
+                <img src="./src/img/1.png" alt="">
+            </div>
+            <div class="right">
+                <p class="text-df">标题</p>
+                <p class="text-df color_3">副标题</p>
+                <p class="text-df color_3">副标题</p>
+                <div class="text-xs color_3 tag-wrap">
+                    <p class="tag">标签</p>
+                    <p class="num">x1</p>
+                </div>
+                <p class="price">￥123</p>
+            </div>
+        </li> -->
+    </ul>
+    <div class="be-center-3 ">
+        <p class="w-lg">商品金额</p>
+        <p id="total_fee_1">￥123</p>
+    </div>
+    <div class="be-center-3 ">
+        <p class="w-lg">运费，普通用户剩1次免运费</p>
+        <p>+￥0</p>
+    </div>
+
+
+
+
+
+    <!-- ctr -->
+    <div class="bottom-bar">
+        <p id="total_fee_2">应付金额： ￥ 336，384</p>
+        <div id="submit" class="btn">提交订单</div>
+    </div>
+
+
+
+    <!-- alert -->
+    <div class="shoTost text-df" style="display: none">请添加。。。</div>
+
+    <!-- alert 自提点联系人信息 -->
+    <div class="alert-wrapper user-wrapper" style="display: none">
+        <div class="alert-content">
+            <div class="be-center-2">
+                <p class="w-df">自提点联系人信息</p>
+                <img class="close-icon user-close" src="./src/img/icon/x.png" alt="">
+            </div>
+            <input id="user-name" type="text" placeholder="请添加联系人姓名"> 
+            <input id="user-phone" type="text" placeholder="请添加联系人电话"> 
+            <!-- <input type="button" value="确定" class="submit user-btn-active"> -->
+            <input id="user-submit" type="button" value="确定" class="submit">
+        </div>
+    </div>
+
+    <!-- alert 输入身份证号 -->
+    <div class="alert-wrapper shenfen-wrap" style="display: none">
+        <div class="alert-content">
+            <div class="be-center-2">
+                <p class="w-df">输入身份证号</p>
+                <img class="close-icon shenfen-close" src="./src/img/icon/x.png" alt="">
+            </div>
+            <input id="shenfenCard" type="text" placeholder="请添加收货人身份证号">
+            <input id="shenfenCard-submit" type="button" value="确定" class="submit">
+            <!--  shenfenCard-active -->
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- 弹窗 tips -->
+    <div class="alert-tips"></div>
+
+    <div class="alert-info" style="display: none">
+        <div class="content">
+            <p class="addcon">提示内容</p>
+            <div class="btn">
+                <div class="btn-cancel addClose back">取消</div>
+                <div class="btn-ok toChooseAddress">确定</div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/store.js/1.3.20/store.min.js"></script>
+    <script src="./src/js/global.js"></script>
+    <script src="./src/js/jieshuan.js"></script>
+</body>
+</html>
