@@ -8,8 +8,8 @@
   <div class="fixed-bar">
     <div class="item-title">
       <div class="subject">
-        <h3>商品订单</h3>
-        <h5>商城实物商品交易订单查询及管理</h5>
+        <h3>订单列表</h3>
+        <h5></h5>
       </div>
     </div>
   </div>
@@ -20,9 +20,7 @@
       <span title="收起提示" id="explanationZoom" style="display: block;"></span>
     </div>
      <ul>
-      <li>查看操作可以查看订单详情, 包括支付费用, 商品详情等</li>
-      <li>未支付的订单可以取消</li>
-      <li>用户收货后, 如果没有点击"确认收货",系统自动根据设置的时间自动收货.</li>
+     
     </ul>
   </div>
   <div class="flexigrid">
@@ -54,20 +52,20 @@
         			<option value="1">已支付</option>
             </select>
         </div>
-        <div class="sDiv2">	   
+        <!-- <div class="sDiv2">     
             <select name="pay_code" class="select sDiv3" style="margin-right:5px;margin-left:5px">
                 <option value="">支付方式</option>
                 <option value="alipay">支付宝支付</option>
-				<option value="weixin">微信支付</option>
-				<option value="cod">货到付款</option>
+                      <option value="weixin">微信支付</option>
+                      <option value="cod">货到付款</option>
              </select>
-         </div>
+         </div> -->
          <div class="sDiv2">	 
              <select name="shipping_status" class="select sDiv3" >
                 <option value="">发货状态</option>
                 <option value="0">未发货</option>
                 <option value="1">已发货</option>
-                <option value="2">部分发货</option>
+                <!-- <option value="2">部分发货</option> -->
              </select>
           </div>
           <div class="sDiv2">	 
@@ -142,15 +140,15 @@
     </div>
     <div class="tDiv">
       <div class="tDiv2">
-        <div class="fbutton"> 
+         <!-- <div class="fbutton"> 
         	<a href="javascript:exportReport()">
 	          	<div class="add" title="选定行数据导出excel文件,如果不选中行，将导出列表所有数据">
 	            	<span><i class="fa fa-plus"></i>导出数据</span>
 	          	</div>
           	</a> 
-          </div>
+          </div> -->
           <div class="fbutton"> 
-        	<a href="/index.php?m=Admin&c=Order&a=add_order">
+        	  <a href="/index.php?m=Admin&c=Order&a=add_order">
 	          	<div class="add" title="添加订单">
 	            	<span><i class="fa fa-plus"></i>添加订单</span>
 	          	</div>

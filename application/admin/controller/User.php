@@ -113,6 +113,7 @@ class User extends Base {
     public function add_user(){
         if(IS_POST){
             $data = I('post.');
+            $data['sale_id'] = session('admin_id');
             $user_obj = new UsersLogic();
             $res = $user_obj->addUser($data);
             if($res['status'] == 1){

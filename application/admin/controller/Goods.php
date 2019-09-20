@@ -166,6 +166,39 @@ class Goods extends Base {
 
     }
 
+    // 商品详情
+    public function detail()
+    {
+        $goods_id = I('goods_id');
+
+        $GoodsLogic = new GoodsLogic();
+        $Goods = new \app\admin\model\Goods();
+
+        $goodsInfo = M('Goods')->where('goods_id', $goods_id)->find();
+
+        $level_cat = $GoodsLogic->find_parent_cat($goodsInfo['cat_id']); // 获取分类默认选中的下拉框
+        $level_cat2 = $GoodsLogic->find_parent_cat($goodsInfo['extend_cat_id']); // 获取分类默认选中的下拉框
+        $cat_list = M('goods_category')->where("parent_id = 0")->select(); // 已经改成联动菜单
+        $brandList = M('brand')->field('id, name')->select();
+        $goodsType = M("GoodsType")->select();
+
+        $this->assign('level_cat', $level_cat);
+        $this->assign('level_cat2', $level_cat2);
+        $this->assign('cat_list', $cat_list);
+        $this->assign('brandList', $brandList);
+        if ($goodsInfo['brand_id']){
+            $seriesList = M("Series")->where('brand_id ='.$goodsInfo['brand_id'])->field('id,name')->select();
+            $this->assign('seriesList', $seriesList);
+        }
+
+        $this->assign('goods_log_id', $id);
+        $this->assign('goodsType', $goodsType);
+        $this->assign('goodsInfo', $goodsInfo);  // 商品详情
+        $goodsImages = M("GoodsImages")->where('goods_id =' . I('GET.id', 0))->select();
+        $this->assign('goodsImages', $goodsImages);  // 商品相册
+        return $this->fetch();
+    }
+
     public  function getCategoryBindList(){
         $cart_id = I('cart_id/d',0);
         $GoodsLogic = new GoodsLogic();

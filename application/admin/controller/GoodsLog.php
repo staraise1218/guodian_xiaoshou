@@ -49,7 +49,7 @@ class GoodsLog extends Base {
     
 
     /**
-     * 添加修改商品
+     * 记录详情
      */
     public function detail()
     {

@@ -72,7 +72,10 @@ class Order extends Base {
         I('pay_status') != '' ? $condition['pay_status'] = I('pay_status') : false;
         I('pay_code') != '' ? $condition['pay_code'] = I('pay_code') : false;
         I('shipping_status') != '' ? $condition['shipping_status'] = I('shipping_status') : false;
-        I('user_id') ? $condition['user_id'] = trim(I('user_id')) : false;
+        // 获取该销售所负责的用户的id
+        $saleUsers = Db::name('users')->where('sale_id', session('admin_id'))->column('user_id');
+        $condition['user_id'] = array('in', $saleUsers);
+
         $sort_order = I('order_by','DESC').' '.I('sort');
         $count = M('order')->where($condition)->count();
         $Page  = new AjaxPage($count,20);
@@ -1189,7 +1192,10 @@ class Order extends Base {
     {
         $search_key = trim(I('search_key'));
         if ($search_key == '') $this->ajaxReturn(['status' => -1, 'msg' => '请按要求输入！！']);
-        $list = M('users')->where('mobile', $search_key)->select();
+
+        $where['mobile'] = $search_key;
+        $where['sale_id'] = session('admin_id');
+        $list = M('users')->where($where)->select();
         if ($list) {
             $this->ajaxReturn(['status' => 1, 'msg' => '获取成功', 'result' => $list]);
         }
