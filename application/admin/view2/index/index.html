@@ -31,7 +31,7 @@
 <div class="admincp-header">
   <div class="bgSelector"></div>
   <div id="foldSidebar"><i class="fa fa-outdent " title="展开/收起侧边导航"></i></div>
-  <div class="admincp-name" onClick="javascript:openItem('welcome|Index');">
+  <div class="admincp-name">
     <img src="__PUBLIC__/static/images/TPlogo.png" alt="">
   </div>
   <div class="nc-module-menu">
@@ -75,17 +75,6 @@
 </div>
 </body>
 <script type="text/javascript"> 
-	// 没有点击收货确定的按钮让他自己收货确定    
-	var timestamp = Date.parse(new Date());
-	$.ajax({
-        type:'post',
-        url:"{:U('Admin/System/login_task')}",
-        data:{timestamp:timestamp},
-        timeout : 100000000, //超时时间设置，单位毫秒
-        success:function(){
-            // 执行定时任务
-        }
-	});
 	
 	
     $("#admin-manager-btn").click(function () {
