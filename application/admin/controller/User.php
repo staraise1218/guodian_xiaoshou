@@ -138,6 +138,14 @@ class User extends Base {
                 $data['password'] = encrypt($data['password']);
             }
 
+            if($data['old_mobile'] != $data['mobile']){
+                $is_exist = Db::name('users')->where('user_id', '<>', $user_id)->where('mobile', $data['mobile'])->count();
+ 
+                if($is_exist) $this->error('该手机号已存在');
+            } else {
+                unset($data['mobile']);
+            }
+
             $user_id = $data['user_id'];
             unset($data['user_id']);
             Db::name('users')->where('user_id', $user_id)->update($data);

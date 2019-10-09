@@ -19,7 +19,10 @@
                     <label for="mobile"><em>*</em>手机号码</label>
                 </dt>
                 <dd class="opt">
-                    {$user.mobile}
+                    <input type="hidden" name="old_mobile" value="{$user.mobile}">
+                    <input type="text" name="mobile" id="mobile" class="input-txt" value="{$user.mobile}">
+                    <span class="err"></span>
+                    <p class="notic"></p>
                 </dd>
             </dl>
             <dl class="row">
