@@ -178,8 +178,8 @@ class Admin extends Base {
         $config = array(
             'fontSize' => 30,
             'length' => 4,
-            'useCurve' => true,
-            'useNoise' => false,
+            'useCurve' => false,
+            'useNoise' => true,
         	'reset' => false
         );    
         $Verify = new Verify($config);

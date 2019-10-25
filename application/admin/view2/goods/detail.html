@@ -98,7 +98,8 @@
             </div>
             <ul class="tab-base nc-row">
                 <li><a href="javascript:void(0);" data-index='1' class="tab current"><span>通用信息</span></a></li>
-                <!-- <li><a href="javascript:void(0);" data-index='3' class="tab"><span>商品模型</span></a></li> -->
+                <li><a href="javascript:void(0);" data-index='2' class="tab"><span>商品相册</span></a></li>
+                <li><a href="javascript:void(0);" data-index='3' class="tab"><span>商品模型</span></a></li>
             </ul>
         </div>
     </div>
@@ -202,8 +203,8 @@
                 <dd class="opt">
                     <div class="input-file-show">
                         <span class="show">
-                            <a id="img_a" target="_blank" class="nyroModal" rel="gal" href="{$goodsInfo.original_img}">
-                                <i id="img_i" class="fa fa-picture-o" onMouseOver="layer.tips('<img src={$goodsInfo.original_img}>',this,{tips: [1, '#fff']});" onMouseOut="layer.closeAll();"></i>
+                            <a id="img_a" target="_blank" class="nyroModal" rel="gal" href="http://www.guodianjm.com/{$goodsInfo.original_img}">
+                                <i id="img_i" class="fa fa-picture-o" onMouseOver="layer.tips('<img src=http://www.guodianjm.com/{$goodsInfo.original_img}>',this,{tips: [1, '#fff']});" onMouseOut="layer.closeAll();"></i>
                             </a>
                         </span>
                     </div>
@@ -251,6 +252,30 @@
             </dl>                                                                                                                                           
         </div>
         <!--通用信息-->
+<!-- 商品相册-->        
+        <div class="ncap-form-default tab_div_2" style="display:none;">
+            <dl class="row">
+                 <div class="tab-pane" id="tab_goods_images">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <td>
+                            <foreach name="goodsImages" item="vo" key="k" >
+                                <div style="width:100px; text-align:center; margin: 5px; display:inline-block;" class="goods_xc">
+                                    
+                                    <a onClick="" href="http://www.guodianjm.com/{$vo['image_url']}" target="_blank"><img width="100" height="100" src="http://www.guodianjm.com/{$vo['image_url']}"></a>
+                   
+                                </div>
+                            </foreach>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </dl>             
+        </div>   
+<!-- 商品相册-->
 
         <!-- 商品模型-->
 		<div class="ncap-form-default tab_div_3" style="display:none;">
@@ -260,7 +285,7 @@
                         <tr>
                             <td>商品模型:</td>
                             <td>
-                              <select name="goods_type" id="spec_type" class="form-control" style="width:250px;">
+                              <select name="goods_type" id="spec_type" class="form-control" style="width:250px;" disabled="disabled">
                                 <option value="0">选择商品模型</option>
                                 <foreach name="goodsType" item="vo" key="k" >
                                     <option value="{$vo.id}"<if condition="$goodsInfo[goods_type] eq $vo[id]"> selected="selected" </if> >{$vo.name}</option>
@@ -272,19 +297,13 @@
                     <div class="row">
                         <!-- ajax 返回规格-->
                         <div id="ajax_spec_data" class="col-xs-8" ></div>
-                        <div id="" class="col-xs-4" >
-                            <table class="table table-bordered" id="goods_attr_table">
-                                <tr>
-                                    <td><b>商品属性</b>：</td>
-                                </tr>
-                            </table>
-                        </div>
+
                     </div>
                 </div>
             </dl>             
         </div>   
         <!-- 商品模型-->         
-
+         <input type="hidden" name="goods_id" value="{$goodsInfo.goods_id}">
      </form>
     <!--表单数据-->
 </div>
@@ -409,9 +428,6 @@
 		});		
     }
 
-
-/** 以下 商品属性相关 js*/
-
 // 属性输入框的加减事件
 function addAttr(a)
 {
@@ -435,24 +451,14 @@ $(document).ready(function(){
         var spec_type = $(this).val();
             $.ajax({
                     type:'GET',
-                    data:{goods_id:goods_id,spec_type:spec_type}, 
+                    data:{goods_id:goods_id,spec_type:spec_type, type:'detail'}, 
                     url:"{:U('admin/Goods/ajaxGetSpecSelect')}",
                     success:function(data){                            
                            $("#ajax_spec_data").html('')
                            $("#ajax_spec_data").append(data);
 			   ajaxGetSpecInput();	// 触发完  马上触发 规格输入框
                     }
-            });           
-            //商品类型切换时 ajax 调用  返回不同的属性输入框     
-            $.ajax({
-                 type:'GET',
-                 data:{goods_id:goods_id,type_id:spec_type}, 
-                 url:"/index.php/admin/Goods/ajaxGetAttrInput",
-                 success:function(data){                            
-                         $("#goods_attr_table tr:gt(0)").remove()
-                         $("#goods_attr_table").append(data);
-                 }        
-           });
+            }); 
     });
 	// 触发商品规格
 	$("#spec_type").trigger('change'); 
@@ -466,7 +472,20 @@ $(document).ready(function(){
     });
 });
 
-
+// tab切换
+$(document).ready(function(){    
+    //插件切换列表
+    $('.tab-base').find('.tab').click(function(){
+        $('.tab-base').find('.tab').each(function(){
+            $(this).removeClass('current');
+        });
+        $(this).addClass('current');
+        var tab_index = $(this).data('index');          
+        $(".tab_div_1, .tab_div_2, .tab_div_3, .tab_div_4,.tab_div_5").hide();          
+        $(".tab_div_"+tab_index).show();
+    });     
+        
+});
 
 
 </script>

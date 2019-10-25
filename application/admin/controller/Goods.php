@@ -194,7 +194,7 @@ class Goods extends Base {
         $this->assign('goods_log_id', $id);
         $this->assign('goodsType', $goodsType);
         $this->assign('goodsInfo', $goodsInfo);  // 商品详情
-        $goodsImages = M("GoodsImages")->where('goods_id =' . I('GET.id', 0))->select();
+        $goodsImages = M("GoodsImages")->where('goods_id =' . I('GET.goods_id', 0))->select();
         $this->assign('goodsImages', $goodsImages);  // 商品相册
         return $this->fetch();
     }
@@ -903,7 +903,9 @@ class Goods extends Base {
         
         $this->assign('items_ids',$items_ids);
         $this->assign('specList',$specList);
-        return $this->fetch('ajax_spec_select');        
+        $template = 'ajax_spec_select';
+        if(I('type') == 'detail') $template = 'ajax_spec_select_for_detail';
+        return $this->fetch($template);        
     }    
     
     /**

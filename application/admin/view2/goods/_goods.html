@@ -421,31 +421,31 @@
 <!-- 商品物流-->
 		<div class="ncap-form-default tab_div_4" style="display:none;">
             <dl class="row">
-                        <div class="tab-pane" id="tab_goods_shipping">
-                            <h4><b>物流配送：</b><input type="checkbox" onClick="choosebox(this)">全选</h4>
-                            <table class="table table-bordered table-striped dataTable" id="goods_shipping_table">
-                                <foreach name="plugin_shipping" item="shipping" key="kk">
-                                    <tr>
-                                        <td class="title left" style="padding-right:50px;">
-                                            <b>{$shipping[name]}：</b>
-                                            <label class="right"><input type="checkbox" value="1" cka="mod-{$kk}">全选</label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <ul class="group-list">
-                                                <foreach name="shipping_area" item="vv">
-                                                    <if condition="$vv[shipping_code] eq $shipping[code]">
-                                                        <li><label><input type="checkbox" name="shipping_area_ids[]" value="{$vv.shipping_area_id}" <if condition="in_array($vv['shipping_area_id'],$goods_shipping_area_ids)">checked='checked='</if> ck="mod-{$kk}">{$vv.shipping_area_name}</label></li>
-                                                    </if>
-                                                </foreach>
-                                                <div class="clear-both"></div>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                </foreach>
-                            </table>
-                        </div>                
+                <div class="tab-pane" id="tab_goods_shipping">
+                    <h4><b>物流配送：</b><input type="checkbox" onClick="choosebox(this)">全选</h4>
+                    <table class="table table-bordered table-striped dataTable" id="goods_shipping_table">
+                        <foreach name="plugin_shipping" item="shipping" key="kk">
+                            <tr>
+                                <td class="title left" style="padding-right:50px;">
+                                    <b>{$shipping[name]}：</b>
+                                    <label class="right"><input type="checkbox" value="1" cka="mod-{$kk}">全选</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="group-list">
+                                        <foreach name="shipping_area" item="vv">
+                                            <if condition="$vv[shipping_code] eq $shipping[code]">
+                                                <li><label><input type="checkbox" name="shipping_area_ids[]" value="{$vv.shipping_area_id}" <if condition="in_array($vv['shipping_area_id'],$goods_shipping_area_ids)">checked='checked='</if> ck="mod-{$kk}">{$vv.shipping_area_name}</label></li>
+                                            </if>
+                                        </foreach>
+                                        <div class="clear-both"></div>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </foreach>
+                    </table>
+                </div>                
             </dl>             
         </div>   
 <!-- 商品物流-->
