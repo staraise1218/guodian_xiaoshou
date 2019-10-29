@@ -51,7 +51,7 @@
                 <dd class="opt">
                     <input type="text" name="user_name" id="user_name" class="input-txt" placeholder="手机号搜索" />
                     <select name="user_id" id="user_id">
-                        <option value="0">选择用户</option>
+                        <option value="">选择用户</option>
                     </select>
                     <a href="javascript:void(0);" onclick="search_user();" class="ncap-btn ncap-btn-green" ><i class="fa fa-search"></i>搜索</a>
                 </dd>
@@ -185,6 +185,9 @@
             },
             ignore:":button", //不验证的元素
             rules:{
+                user_id:{
+                    required:true
+                },
                 consignee:{
                     required:true
                 },
@@ -208,6 +211,9 @@
                 },
             },
             messages:{
+                user_id:{
+                    required:"请选择用户"
+                },
                 consignee:{
                     required:"请填写收货人"
                 },
