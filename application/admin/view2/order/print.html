@@ -75,11 +75,9 @@ dd:before{
            <h3>收货人信息</h3>
            		<dl>
 		            <dt>收件人：</dt>
-		            <dd>{$order.consignee}</dd>
+		            <dd><if condition="$order.admin_id eq session('admin_id')">{$order.consignee} <else /> ***** </if></dd>
 		            <dt>联系电话：</dt>
-		            <dd>{$order.mobile}</dd>
-		            <dt>邮编：</dt>
-		            <dd>{$order.zipcode}</dd>
+		            <dd><if condition="$order.admin_id eq session('admin_id')">{$order.mobile} <else /> ***** </if></dd>
 		          </dl>
 		          <dl>
 	              	<dt>邮箱：</dt>
@@ -87,7 +85,7 @@ dd:before{
 		           </dl>
 	              <dl>
 	              	<dt>收货地址：</dt>
-		            <dd>{$order.full_address}</dd>
+		            <dd><if condition="$order.admin_id eq session('admin_id')">{$order.full_address} <else /> ***** </if></dd>
 			       </dl>
         	</div>
         

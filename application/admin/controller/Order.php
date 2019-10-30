@@ -73,8 +73,10 @@ class Order extends Base {
         I('pay_code') != '' ? $condition['pay_code'] = I('pay_code') : false;
         I('shipping_status') != '' ? $condition['shipping_status'] = I('shipping_status') : false;
         // 获取该销售所负责的用户的id
-        $saleUsers = Db::name('users')->where('sale_id', session('admin_id'))->column('user_id');
-        $condition['user_id'] = array('in', $saleUsers);
+        // $saleUsers = Db::name('users')->where('sale_id', session('admin_id'))->column('user_id');
+        // $condition['user_id'] = array('in', $saleUsers);
+        // 销售能看到所有线下订单（后台下的单）
+        $condition['admin_id'] = array('<>', 0);
 
         $sort_order = I('order_by','DESC').' '.I('sort');
         $count = M('order')->where($condition)->count();
@@ -1194,7 +1196,7 @@ class Order extends Base {
         if ($search_key == '') $this->ajaxReturn(['status' => -1, 'msg' => '请按要求输入！！']);
 
         $where['mobile'] = $search_key;
-        $where['sale_id'] = session('admin_id');
+        // $where['sale_id'] = session('admin_id');
         $list = M('users')->where($where)->select();
         if ($list) {
             $this->ajaxReturn(['status' => 1, 'msg' => '获取成功', 'result' => $list]);

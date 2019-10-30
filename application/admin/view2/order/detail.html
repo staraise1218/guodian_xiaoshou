@@ -104,7 +104,13 @@ a.green:hover { color: #FFF; background-color: #1BBC9D; border-color: #16A086; }
                     <dt>E-Mail：</dt>
                     <dd>{$order.email}</dd>
                     <dt>电话：</dt>
-                    <dd>{$order.mobile}</dd>
+                    <dd>
+                      <if condition="$order.admin_id eq session('admin_id')">
+                        {$order.mobile}
+                      <else />
+                      *****
+                      </if>
+                    </dd>
                     <dt>应付金额：</dt>
                     <dd>{$order.order_amount}</dd>
                 </dl>
@@ -135,17 +141,13 @@ a.green:hover { color: #FFF; background-color: #1BBC9D; border-color: #16A086; }
           <h4>收货信息</h4>
           <dl>
             <dt>收货人：</dt>
-            <dd>{$order.consignee}</dd>
+            <dd><if condition="$order.admin_id eq session('admin_id')">{$order.consignee} <else /> ***** </if></dd>
             <dt>联系方式：</dt>
-            <dd>{$order.mobile}</dd>
+            <dd><if condition="$order.admin_id eq session('admin_id')">{$order.mobile} <else /> ***** </if></dd>
           </dl>
           <dl>
             <dt>收货地址：</dt>
-            <dd>{$order.address2}</dd>
-          </dl>
-          <dl>
-            <dt>邮编：</dt>
-            	<dd><if condition="$order.zipcode neq ''"> {$order.zipcode}<else/>N</if></dd>
+            <dd><if condition="$order.admin_id eq session('admin_id')">{$order.address2} <else /> ***** </if></dd>
           </dl>
           <dl>
            		<dt>配送方式：</dt>

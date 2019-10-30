@@ -16,7 +16,13 @@
           <div style="text-align: left; width: 140px;" class="">{$list.order_sn}</div>
         </td>
         <td align="left" abbr="consignee" axis="col4" class="">
-          <div style="text-align: left; width: 120px;" class="">{$list.consignee}:{$list.mobile}</div>
+          <div style="text-align: left; width: 120px;" class="">
+            <if condition="$list.admin_id eq session('admin_id')">
+              {$list.consignee}:{$list.mobile}
+            <else />
+            *****
+            </if>
+          </div>
         </td>
         <td align="center" abbr="article_show" axis="col5" class="">
           <div style="text-align: center; width: 60px;" class="">{$list.goods_price}</div>
